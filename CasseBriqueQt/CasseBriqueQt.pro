@@ -25,10 +25,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+    hardstuff.cpp \
+    brick.cpp \
+    disk.cpp \
+    wall.cpp
 
 HEADERS += \
-        mainwindow.h
+    hardstuff.h \
+    brick.h \
+    disk.h \
+    wall.h
 
-FORMS += \
-        mainwindow.ui
+FORMS +=
+
+INCLUDEPATH +=$$(OPENCV_DIR)\..\..\include
