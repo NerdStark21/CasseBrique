@@ -28,13 +28,15 @@ SOURCES += \
     hardstuff.cpp \
     brick.cpp \
     disk.cpp \
-    wall.cpp
+    wall.cpp \
+    player.cpp
 
 HEADERS += \
     hardstuff.h \
     brick.h \
     disk.h \
-    wall.h
+    wall.h \
+    player.h
 
 FORMS +=
 
