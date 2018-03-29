@@ -1,17 +1,18 @@
 #ifndef BRICK_H
 #define BRICK_H
 
+#include "ball.h"
 #include "hardstuff.h"
 
 class Brick : public HardStuff
 {
-private:
-    Rect stuff;
-
 public:
     Brick();
-    bool isTouched(Ball* ball);
-    void updateAngle()
+
+    // Les fonctions abstraites de HardStuff
+    bool isTouched(Ball *);
+    void udateAngle(Ball *);
+    void updatePosition(Ball *);
 };
 
 #endif // BRICK_H

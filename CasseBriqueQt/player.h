@@ -13,9 +13,9 @@ private:
 
 public:
     Player();
-    int getScore(){return score_;}
-    int getNbBall(){return nbBall_;}
-    void addScore(int add){score_ += add;}
+    int getScore() { return score_; }
+    int getNbBall() { return nbBall_; }
+    void addScore(int add) { score_ += add; }
 }
 
 #endif // PLAYER_H

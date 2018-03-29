@@ -31,7 +31,8 @@ SOURCES += \
     wall.cpp \
     ball.cpp \
     player.cpp \
-    myglwidget.cpp
+    myglwidget.cpp \
+    model.cpp
 
 HEADERS += \
     hardstuff.h \
@@ -40,7 +41,8 @@ HEADERS += \
     wall.h \
     ball.h \
     player.h \
-    myglwidget.h
+    myglwidget.h \
+    model.h
 
 FORMS +=
 

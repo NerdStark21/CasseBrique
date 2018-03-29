@@ -13,8 +13,30 @@ protected:
 
 public:
     HardStuff();
-    virtual bool isTouched(Ball*) = 0;
-    virtual void newAngle(Ball*) = 0;
+
+    /**
+     * @brief isTouched
+     * Cette fonction permet de savoir si l'objet est en colision avec la boule ou non
+     *
+     * @return true si la boule a une partie qui touche l'objet et false sinon
+     */
+    virtual bool isTouched(Ball *) = 0;
+
+    /**
+     * @brief updateAngle
+     *  Cette fonction permet de mettre à jour l'attribut angle_ de la ball
+     * @param ball
+     *  pointeur vers la boule à mettre à jour
+     */
+    virtual void updateAngle(Ball * ball) = 0;
+
+    /**
+     * @brief updatePosition
+     *  Cette fonction permet de mettre à jour l'attribut position_ de la ball
+     * @param ball
+     *  pointeur vers la boule à mettre à jour
+     */
+    virtual void updatePosition(Ball * ball) = 0;
 };
 
 #endif // HARDSTUFF_H
