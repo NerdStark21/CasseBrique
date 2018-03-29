@@ -1,8 +1,9 @@
 #ifndef DISK_H
 #define DISK_H
 
+#include "hardstuff.h"
 
-class Disk : public HardDisk
+class Disk : public HardStuff
 {
 public:
     Disk();
