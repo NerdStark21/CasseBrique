@@ -12,7 +12,7 @@ private:
     int nbBall_;
 
 public:
-    Player Player();
+    Player();
     int getScore(){return score_;}
     int getNbBall(){return nbBall_;}
     void addScore(int add){score_ += add;}

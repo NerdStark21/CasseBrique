@@ -1,6 +1,7 @@
 #ifndef BRICK_H
 #define BRICK_H
 
+#include "hardstuff.h"
 
 class Brick : public HardStuff
 {

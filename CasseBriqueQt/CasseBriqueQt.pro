@@ -29,14 +29,16 @@ SOURCES += \
     brick.cpp \
     disk.cpp \
     wall.cpp \
-    player.cpp
+    player.cpp \
+    myglwidget.cpp
 
 HEADERS += \
     hardstuff.h \
     brick.h \
     disk.h \
     wall.h \
-    player.h
+    player.h \
+    myglwidget.h
 
 FORMS +=
 

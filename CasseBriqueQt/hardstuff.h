@@ -8,9 +8,6 @@ using namespace cv;
 
 class HardStuff
 {
-protected:
-    virtual Rect stuff;
-
 public:
     HardStuff();
     virtual bool isTouched(Ball*);

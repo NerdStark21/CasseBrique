@@ -1,6 +1,7 @@
 #ifndef WALL_H
 #define WALL_H
 
+#include "hardstuff.h"
 
 class Wall : public HardStuff
 {
