@@ -29,16 +29,32 @@ SOURCES += \
     brick.cpp \
     disk.cpp \
     wall.cpp \
+<<<<<<< HEAD
     player.cpp \
     myglwidget.cpp
+=======
+<<<<<<< HEAD
+    ball.cpp
+=======
+    player.cpp
+>>>>>>> d80b21deaf4f6d71748293902f724c86f9e89b84
+>>>>>>> 486330e1af1adc82cfba2d19d94ab622e0da91ea
 
 HEADERS += \
     hardstuff.h \
     brick.h \
     disk.h \
     wall.h \
+<<<<<<< HEAD
     player.h \
     myglwidget.h
+=======
+<<<<<<< HEAD
+    ball.h
+=======
+    player.h
+>>>>>>> d80b21deaf4f6d71748293902f724c86f9e89b84
+>>>>>>> 486330e1af1adc82cfba2d19d94ab622e0da91ea
 
 FORMS +=
 
