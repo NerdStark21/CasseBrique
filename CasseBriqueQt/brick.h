@@ -1,16 +1,13 @@
 #ifndef BRICK_H
 #define BRICK_H
 
+#include "ball.h"
 #include "hardstuff.h"
 
 class Brick : public HardStuff
 {
-private:
-    Rect stuff;
-
 public:
     Brick();
-    void updateAngle();
 };
 
 #endif // BRICK_H

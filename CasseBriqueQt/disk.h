@@ -5,10 +5,11 @@
 
 class Disk : public HardStuff
 {
+private:
+    int angleScale[2]; // Minimum et maximum des angles de rebond
+
 public:
     Disk();
-private:
-    int angleScale[2];      //Min et max des angles de rebond
 };
 
 #endif // DISK_H

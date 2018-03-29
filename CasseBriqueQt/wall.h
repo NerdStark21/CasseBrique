@@ -5,9 +5,6 @@
 
 class Wall : public HardStuff
 {
-private:
-    Rect stuff;
-
 public:
     Wall();
 };
