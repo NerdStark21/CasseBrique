@@ -5,6 +5,9 @@
 
 class Brick : public HardStuff
 {
+private:
+    Rect stuff;
+
 public:
     Brick();
 };
