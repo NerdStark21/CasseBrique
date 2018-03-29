@@ -29,14 +29,22 @@ SOURCES += \
     brick.cpp \
     disk.cpp \
     wall.cpp \
+<<<<<<< HEAD
     ball.cpp
+=======
+    player.cpp
+>>>>>>> d80b21deaf4f6d71748293902f724c86f9e89b84
 
 HEADERS += \
     hardstuff.h \
     brick.h \
     disk.h \
     wall.h \
+<<<<<<< HEAD
     ball.h
+=======
+    player.h
+>>>>>>> d80b21deaf4f6d71748293902f724c86f9e89b84
 
 FORMS +=
 
