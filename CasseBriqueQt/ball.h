@@ -15,8 +15,8 @@ class Ball
 
 public:
     Ball();
-    Point getPosition() { return position_; }
-    void setAngle(float angle) { angle_ = angle; }
+    Point getPosition() const { return position_; }
+    void setAngle(const float angle) { angle_ = angle; }
 
 };
 

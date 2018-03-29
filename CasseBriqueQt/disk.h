@@ -10,6 +10,10 @@ private:
 
 public:
     Disk();
+
+    virtual bool isTouched(const Ball * ball) const;
+    virtual void updateAngle(Ball * ball) const;
+    virtual void updatePosition(Ball * ball) const;
 };
 
 #endif // DISK_H
