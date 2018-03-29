@@ -6,6 +6,17 @@ Wall::Wall(GLfloat* vertices, bool isDestructive)
     isDestructive_ = isDestructive;
 }
 
-void drawWall(){
+bool Wall::isTouched(const Ball *ball) const
+{
+    return true;
+}
+
+void Wall::updateAngle(Ball *ball) const
+{
+
+}
+
+void Wall::updatePosition(Ball *ball) const
+{
 
 }
