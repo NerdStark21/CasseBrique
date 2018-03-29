@@ -6,6 +6,7 @@
 #include <QtOpenGL/QGLWidget>
 #include <QDebug>
 #include <GL/glu.h>
+#include "wall.h"
 
 class MyGLWidget : public QGLWidget{
     Q_OBJECT

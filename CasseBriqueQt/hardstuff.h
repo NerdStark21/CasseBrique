@@ -3,6 +3,9 @@
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/core.hpp>
+#include <QtOpenGL/QGLWidget>
+#include <GL/glu.h>
+
 #include "ball.h"
 
 using namespace cv;

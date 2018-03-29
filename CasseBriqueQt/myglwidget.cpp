@@ -2,6 +2,8 @@
 
 #include "myglwidget.h"
 
+using namespace cv;
+
 // Declarations des constantes
 // 1600 - 900
 const unsigned int WIN_WIDTH  = 1000;
@@ -21,6 +23,18 @@ void MyGLWidget::initializeGL()
 {
     // Reglage de la couleur de fond
     glClearColor(0.1f, 0.1f, 0.1f, 0.0f);
+
+    GLfloat coordU[4] = {0, 1, 1, 1};
+    GLfloat coordD[4] = {0, 0, 0, 1};
+    GLfloat coordL[4] = {0, 0, 0, 1};
+    GLfloat coordR[4] = {1, 1, 1, 0};
+
+    // Mur de haut, bas, droite et gauche
+    Wall wallU(coordU, false);
+    Wall wallD(coordD, true);
+    Wall wallL(coordL, false);
+    Wall wallR(coordR, false);
+
 }
 
 // Fonction de redimensionnement

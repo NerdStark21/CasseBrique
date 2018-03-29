@@ -5,8 +5,14 @@
 
 class Wall : public HardStuff
 {
+private:
+    GLfloat* vertices_;
+    bool isDestructive_;
+
 public:
-    Wall();
+    Wall(GLfloat* vertices, bool isDestructive);
+    void drawWall();
+    GLfloat* getVertices(){return vertices_;}
 };
 
 #endif // WALL_H
