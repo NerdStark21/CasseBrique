@@ -14,6 +14,7 @@ class HardStuff
 {
 protected:
     Rect stuff;
+    static float depth_;
 
 public:
     HardStuff();

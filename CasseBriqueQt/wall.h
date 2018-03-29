@@ -6,15 +6,16 @@
 class Wall : public HardStuff
 {
 private:
-    GLfloat* vertices_;
     bool isDestructive_;
 
 public:
     Wall(GLfloat* vertices, bool isDestructive);
-    GLfloat* getVertices(){return vertices_;}
-    virtual bool isTouched(const Ball * ball) const;
-    virtual void updateAngle(Ball * ball) const;
-    virtual void updatePosition(Ball * ball) const;
+    GLfloat* getVertices() { return vertices_; }
+
+    // Les fonctions abstraites de HardStuff
+    virtual bool isTouched(const Ball *) const;
+    virtual void updateAngle(Ball *) const;
+    virtual void updatePosition(Ball *) const;
 };
 
 #endif // WALL_H
