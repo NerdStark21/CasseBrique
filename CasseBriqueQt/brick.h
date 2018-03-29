@@ -11,7 +11,7 @@ public:
 
     // Les fonctions abstraites de HardStuff
     bool isTouched(Ball *);
-    void udateAngle(Ball *);
+    void updateAngle(Ball *);
     void updatePosition(Ball *);
 };
 
