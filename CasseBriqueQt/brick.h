@@ -10,7 +10,6 @@ private:
 
 public:
     Brick();
-    bool isTouched(Ball* ball);
     void updateAngle();
 };
 

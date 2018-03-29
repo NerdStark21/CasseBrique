@@ -7,8 +7,23 @@
 QT += core gui
 #QT += core gui opengl
 #QT += opengl
+QT       += core gui opengl widgets
+CONFIG	 += c++14
+TEMPLATE  = app
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+# ajout des libs au linker
+win32 {
+    win32-msvc* {
+        LIBS     += opengl32.lib glu32.lib
+    } else {
+        LIBS     += -lopengl32 -lglu32
+    }
+}
+unix {
+        LIBS     += -lGL -lGLU
+}
 
 TARGET = CasseBriqueQt
 TEMPLATE = app

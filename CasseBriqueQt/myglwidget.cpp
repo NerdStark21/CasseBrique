@@ -14,22 +14,13 @@ MyGLWidget::MyGLWidget(QWidget * parent) : QGLWidget(parent)
     // Reglage de la taille/position
     setFixedSize(WIN_WIDTH, WIN_HEIGHT);
     move(QApplication::desktop()->screen()->rect().center() - rect().center());
-
-    // Connexion du timer
-    connect(&m_AnimationTimer,  &QTimer::timeout, [&] {
-        m_TimeElapsed += 1.0f / 12.0f;
-        updateGL();
-    });
-
-    m_AnimationTimer.setInterval(10);
-    m_AnimationTimer.start();
 }
 
 // Fonction d'initialisation
 void MyGLWidget::initializeGL()
 {
-    glClearColor(0.1f, 0.1f, 0.1f, 0.0f);   // Reglage de la couleur de fond
-
+    // Reglage de la couleur de fond
+    glClearColor(0.1f, 0.1f, 0.1f, 0.0f);
 }
 
 // Fonction de redimensionnement
@@ -63,7 +54,5 @@ void MyGLWidget::paintGL()
     // Definition de la position de la camera
     // Caméra / Cible / Vecteur vertical
     glLoadIdentity();
-    gluLookAt(-10, 0, 0,
-              0, 0, 0,
-              0, 0, 1);
+    gluLookAt(-10, 0, 0, 0, 0, 0, 0, 0, 1);
 }

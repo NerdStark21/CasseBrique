@@ -1,9 +1,11 @@
 #ifndef MYGLWIDGET_H
 #define MYGLWIDGET_H
 
+#include <QApplication>
 #include <QDesktopWidget>
-#include <QtOpenGL>
+#include <QtOpenGL/QGLWidget>
 #include <QDebug>
+#include <GL/glu.h>
 
 class MyGLWidget : public QGLWidget{
     Q_OBJECT
@@ -22,7 +24,9 @@ protected:
     void paintGL();
 
 private:
-}
+    int width_;
+    int height_;
+};
 
 
 #endif // MYGLWIDGET_H
