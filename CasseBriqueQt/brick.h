@@ -11,7 +11,7 @@ private:
 public:
     Brick();
     bool isTouched(Ball* ball);
-    void updateAngle()
+    void updateAngle();
 };
 
 #endif // BRICK_H

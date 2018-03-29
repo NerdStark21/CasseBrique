@@ -2,7 +2,7 @@
 #define MYGLWIDGET_H
 
 #include <QDesktopWidget>
-#include <QGLWidget>
+#include <QtOpenGL>
 #include <QDebug>
 
 class MyGLWidget : public QGLWidget{
