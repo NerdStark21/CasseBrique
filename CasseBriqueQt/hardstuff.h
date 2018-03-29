@@ -9,12 +9,12 @@ using namespace cv;
 class HardStuff
 {
 protected:
-    virtual Rect stuff;
+    Rect stuff;
 
 public:
     HardStuff();
-    virtual bool isTouched(Ball*);
-    virtual void updateAngle(Ball*);
+    virtual bool isTouched(Ball*) = 0;
+    virtual void newAngle(Ball*) = 0;
 };
 
 #endif // HARDSTUFF_H
