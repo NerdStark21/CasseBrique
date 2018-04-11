@@ -4,7 +4,6 @@ Wall::Wall(GLfloat* vertices, bool isDestructive)
 {
     *vertices_ = *vertices;
     isDestructive_ = isDestructive;
-    depth = 10;
 }
 
 bool Wall::isTouched(const Ball *ball) const
@@ -19,5 +18,5 @@ void Wall::updateAngle(Ball *ball) const
 
 void Wall::updatePosition(Ball *ball) const
 {
-
+    int x = stuff_.x;
 }

@@ -1,6 +1,6 @@
 #include "hardstuff.h"
 
-HardStuff::HardStuff()
+HardStuff::HardStuff(Rect stuff)
 {
-
+    stuff_ = stuff;
 }

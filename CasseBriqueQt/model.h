@@ -20,7 +20,7 @@ class Model
     Player player_; // Contient les informations sur le joueur
 
 public:
-    Model(vector<Rect> listWall);
+    Model(vector<Rect> walls, list<Brick> bricks, Rect disk);
 
     /**
      * @brief updateGame

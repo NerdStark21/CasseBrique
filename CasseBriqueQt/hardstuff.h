@@ -13,11 +13,11 @@ using namespace cv;
 class HardStuff
 {
 protected:
-    Rect stuff; // Le rectangle décrivant la position et la taille de l'objet. L'origine est en haut à gauche du jeu.
+    Rect stuff_; // Le rectangle décrivant la position et la taille de l'objet. L'origine est en haut à gauche du jeu.
     static float depth_; // Profondeur des briques du jeu.
 
 public:
-    HardStuff();
+    HardStuff(Rect stuff);
 
     /**
      * @brief isTouched

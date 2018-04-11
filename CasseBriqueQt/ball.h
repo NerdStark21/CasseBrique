@@ -14,7 +14,7 @@ class Ball
     float angle_; // Direction de la balle
 
 public:
-    Ball();
+    Ball(Rect);
     Point getPosition() const { return position_; }
     float getRadius() const { return radius_; }
     int getSpeed() const { return speed_; }
