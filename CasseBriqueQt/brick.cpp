@@ -1,8 +1,7 @@
 #include "brick.h"
 
-Brick::Brick()
+Brick::Brick(Rect stuff) : HardStuff(stuff)
 {
-
 }
 
 bool Brick::isTouched(const Ball *ball) const

@@ -1,8 +1,7 @@
 #include "wall.h"
 
-Wall::Wall(Rect stuff, bool isDestructive)
+Wall::Wall(Rect stuff, bool isDestructive) : HardStuff(stuff)
 {
-    stuff_ = stuff;
     isDestructive_ = isDestructive;
 }
 
@@ -21,6 +20,6 @@ void Wall::updatePosition(Ball *ball) const
     int x = stuff_.x;
 }
 
-GLfloat* getVertices(){
+GLfloat* Wall::getVertices(){
     int x = stuff_.x;
 }

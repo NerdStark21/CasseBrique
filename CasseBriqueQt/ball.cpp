@@ -1,6 +1,6 @@
 #include "ball.h"
 
-Ball::Ball()
+Ball::Ball(float radius, int speed, float angle)
 {
 
 }

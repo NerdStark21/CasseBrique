@@ -1,8 +1,9 @@
 #include "disk.h"
 
-Disk::Disk()
+Disk::Disk(Rect stuff, int minAngle, int maxAngle) : HardStuff(stuff)
 {
-
+    minAngle_ = minAngle;
+    maxAngle_ = maxAngle;
 }
 
 bool Disk::isTouched(const Ball *ball) const

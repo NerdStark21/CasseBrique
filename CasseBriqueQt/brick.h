@@ -7,7 +7,7 @@
 class Brick : public HardStuff
 {
 public:
-    Brick();
+    Brick(Rect stuff);
 
     // Les fonctions abstraites de HardStuff
     virtual bool isTouched(const Ball *) const;
