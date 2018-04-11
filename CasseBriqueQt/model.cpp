@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Model::Model(vector<Rect> listWall)
+Model::Model()
 {
 
 }

@@ -24,10 +24,10 @@ void MyGLWidget::initializeGL()
     // Reglage de la couleur de fond
     glClearColor(0.1f, 0.1f, 0.1f, 0.0f);
 
-    GLfloat coordU[4] = {0, 10, 10, 10};
-    GLfloat coordD[4] = {0, 0, 0, 10};
-    GLfloat coordL[4] = {0, 0, 0, 10};
-    GLfloat coordR[4] = {10, 10, 10, 0};
+    Rect coordU(0, 10, 10, 0);
+    Rect coordD(0, 0, 10, 0);
+    Rect coordL(0, 0, 0, 10);
+    Rect coordR(0, 10, 0, 10);
 
     model_ = new Model();
 
@@ -66,12 +66,11 @@ void MyGLWidget::paintGL()
     glClear(GL_COLOR_BUFFER_BIT);
 
     for(unsigned int k=0;k<4;k++){
-
+        glEnableClientState(GL_VERTEX_ARRAY); // Active le tableau permettant de définir les vertices
+        glVertexPointer(2, GL_FLOAT, 0, vertices); // 2 coordonnées pour chaque vertex
+        glDrawArrays(GL_LINES, 0, 3*1); // Dessine 2 triangles ayant 3 vertices chacun
+        glDisableClientState(GL_VERTEX_ARRAY); // Désactive le tableau
     }
-    glEnableClientState(GL_VERTEX_ARRAY); // Active le tableau permettant de définir les vertices
-    glVertexPointer(2, GL_FLOAT, 0, vertices); // 2 coordonnées pour chaque vertex
-    glDrawArrays(GL_LINES, 0, 3*1); // Dessine 2 triangles ayant 3 vertices chacun
-    glDisableClientState(GL_VERTEX_ARRAY); // Désactive le tableau
 
 
     // Definition de la position de la camera

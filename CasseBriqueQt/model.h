@@ -13,6 +13,7 @@ using namespace std;
 
 class Model
 {
+private:
     vector<Wall> walls_; // Contient les 4 murs du jeu
     list<Brick> bricks_; // Contient toutes les briques du jeu
     Disk disk_; // Contient le disque du jeu
@@ -20,7 +21,7 @@ class Model
     Player player_; // Contient les informations sur le joueur
 
 public:
-    Model(vector<Rect> listWall);
+    Model();
 
     /**
      * @brief updateGame
@@ -29,10 +30,8 @@ public:
      *  temps écoulé depuis la dernière actualisation
      */
     void updateGame(const float time);
-    void createWall(GLfloat* vertices, bool isdestructive){listWall_.push_back(Wall(vertices, isdestructive));}
-
-private:
-    vector<Wall> listWall_;
+    void createWall(Rect rect, bool isdestructive){walls_.push_back(Wall(rect, isdestructive));}
+    Wall getWall(unsigned int k){return walls_.at(k);}
 };
 
 #endif // MODEL_H
