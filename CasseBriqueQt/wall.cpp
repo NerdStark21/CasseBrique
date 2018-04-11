@@ -4,6 +4,7 @@ Wall::Wall(GLfloat* vertices, bool isDestructive)
 {
     *vertices_ = *vertices;
     isDestructive_ = isDestructive;
+    depth = 10;
 }
 
 bool Wall::isTouched(const Ball *ball) const

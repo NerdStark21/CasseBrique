@@ -1,6 +1,8 @@
 #include "model.h"
 
-Model::Model()
+using namespace std;
+
+Model::Model(vector<Rect> listWall)
 {
 
 }

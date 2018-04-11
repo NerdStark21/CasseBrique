@@ -6,8 +6,11 @@
 class Wall : public HardStuff
 {
 private:
+    // Le point pour dessiner la ligne du mur
     GLfloat* vertices_;
+    // Si un mur entraine la destruction de la balle ou non
     bool isDestructive_;
+    GLfloat depth;
 
 public:
     Wall(GLfloat* vertices, bool isDestructive);

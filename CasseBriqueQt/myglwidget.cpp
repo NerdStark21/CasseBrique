@@ -24,17 +24,17 @@ void MyGLWidget::initializeGL()
     // Reglage de la couleur de fond
     glClearColor(0.1f, 0.1f, 0.1f, 0.0f);
 
-    GLfloat coordU[4] = {0, 1, 1, 1};
-    GLfloat coordD[4] = {0, 0, 0, 1};
-    GLfloat coordL[4] = {0, 0, 0, 1};
-    GLfloat coordR[4] = {1, 1, 1, 0};
+    GLfloat coordU[4] = {0, 10, 10, 10};
+    GLfloat coordD[4] = {0, 0, 0, 10};
+    GLfloat coordL[4] = {0, 0, 0, 10};
+    GLfloat coordR[4] = {10, 10, 10, 0};
 
-    // Mur de haut, bas, droite et gauche
-    Wall wallU(coordU, false);
-    Wall wallD(coordD, true);
-    Wall wallL(coordL, false);
-    Wall wallR(coordR, false);
+    model_ = new Model();
 
+    model_->createWall(coordU, false);
+    model_->createWall(coordD, true);
+    model_->createWall(coordR, false);
+    model_->createWall(coordL, false);
 }
 
 // Fonction de redimensionnement
@@ -64,6 +64,15 @@ void MyGLWidget::paintGL()
 {
     // Reinitialisation des tampons
     glClear(GL_COLOR_BUFFER_BIT);
+
+    for(unsigned int k=0;k<4;k++){
+
+    }
+    glEnableClientState(GL_VERTEX_ARRAY); // Active le tableau permettant de définir les vertices
+    glVertexPointer(2, GL_FLOAT, 0, vertices); // 2 coordonnées pour chaque vertex
+    glDrawArrays(GL_LINES, 0, 3*1); // Dessine 2 triangles ayant 3 vertices chacun
+    glDisableClientState(GL_VERTEX_ARRAY); // Désactive le tableau
+
 
     // Definition de la position de la camera
     // Caméra / Cible / Vecteur vertical

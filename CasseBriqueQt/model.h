@@ -20,15 +20,19 @@ class Model
     Player player_; // Contient les informations sur le joueur
 
 public:
-    Model();
+    Model(vector<Rect> listWall);
 
     /**
-     * @brief updateBall
+     * @brief updateGame
      *  Cette fonction actualise le jeu après un certain temps sans actualisation
      * @param time
      *  temps écoulé depuis la dernière actualisation
      */
     void updateGame(const float time);
+    void createWall(GLfloat* vertices, bool isdestructive){listWall_.push_back(Wall(vertices, isdestructive));}
+
+private:
+    vector<Wall> listWall_;
 };
 
 #endif // MODEL_H

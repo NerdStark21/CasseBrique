@@ -7,6 +7,7 @@
 #include <QDebug>
 #include <GL/glu.h>
 #include "wall.h"
+#include "model.h"
 
 class MyGLWidget : public QGLWidget{
     Q_OBJECT
@@ -27,6 +28,7 @@ protected:
 private:
     int width_;
     int height_;
+    Model* model_;
 };
 
 
