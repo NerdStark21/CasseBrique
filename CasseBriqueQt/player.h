@@ -8,8 +8,8 @@ using namespace cv;
 
 class Player{
 private:
-    int score_;
-    int nbBall_;
+    int score_; // Le score du joueur
+    int nbBall_; // Le nombre de balles restantes au joueur
 
 public:
     Player();

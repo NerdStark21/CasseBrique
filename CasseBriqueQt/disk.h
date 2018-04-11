@@ -11,9 +11,10 @@ private:
 public:
     Disk();
 
-    virtual bool isTouched(const Ball * ball) const;
-    virtual void updateAngle(Ball * ball) const;
-    virtual void updatePosition(Ball * ball) const;
+    // Les fonctions abstraites de HardStuff
+    virtual bool isTouched(const Ball *) const;
+    virtual void updateAngle(Ball *) const;
+    virtual void updatePosition(Ball *) const;
 };
 
 #endif // DISK_H
