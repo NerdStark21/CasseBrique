@@ -17,7 +17,7 @@ protected:
     static float depth_; // Profondeur des briques du jeu.
 
 public:
-    HardStuff();
+    HardStuff(Rect stuff);
 
     /**
      * @brief isTouched

@@ -21,7 +21,7 @@ private:
     Player player_; // Contient les informations sur le joueur
 
 public:
-    Model();
+    Model(vector<Rect> walls, list<Brick> bricks, Rect disk);
 
     /**
      * @brief updateGame
