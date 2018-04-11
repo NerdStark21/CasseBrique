@@ -6,18 +6,7 @@ Disk::Disk(Rect stuff, int minAngle, int maxAngle) : HardStuff(stuff)
     maxAngle_ = maxAngle;
 }
 
-bool Disk::isTouched(const Ball *ball) const
-{
-    return true;
-}
-
-void Disk::updateAngle(Ball *ball) const
+void Disk::updateBall(Ball *ball, const float time) const
 {
 
 }
-
-void Disk::updatePosition(Ball *ball) const
-{
-
-}
-

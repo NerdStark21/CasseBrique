@@ -8,10 +8,11 @@ using namespace cv;
 
 class Ball
 {
-    Point position_; // Position de la balle. L'origine est en bas à gauche et les axes sont usuels.
-    float radius_; // Rayon de la balle
-    int speed_; // Vitesse de la balle en pixels par seconde
-    float angle_; // Direction de la balle
+private:
+    Point position_;    // Position de la balle. L'origine est en bas à gauche et les axes sont usuels.
+    float radius_;    // Rayon de la balle
+    int speed_;    // Vitesse de la balle en pixels par seconde
+    float angle_;    // Direction de la balle
 
 public:
     Ball(float radius, int speed, float angle);

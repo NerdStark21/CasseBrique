@@ -6,17 +6,15 @@
 class Wall : public HardStuff
 {
 private:
-    // Si un mur entraine la destruction de la balle ou non
-    bool isDestructive_;    // Est à true si le mur détruit la balle et false sinon
+    bool isDestructive_;    // Permet de savoir si un mur entraîne la destruction de la balle. Est à true si le mur détruit la balle et false sinon
 
 public:
     Wall(Rect stuff, bool isDestructive);
+    bool getIsDestructive() { return isDestructive_; }
     GLfloat* getVertices();
 
     // Les fonctions abstraites de HardStuff
-    virtual bool isTouched(const Ball *) const;
-    virtual void updateAngle(Ball *) const;
-    virtual void updatePosition(Ball *) const;
+    void updateBall(Ball * ball, const float time) const override;
 };
 
 #endif // WALL_H

@@ -2,19 +2,10 @@
 
 Brick::Brick(Rect stuff) : HardStuff(stuff)
 {
+    points_ = 1;
 }
 
-bool Brick::isTouched(const Ball *ball) const
-{
-    return true;
-}
-
-void Brick::updateAngle(Ball *ball) const
-{
-
-}
-
-void Brick::updatePosition(Ball *ball) const
+void Brick::updateBall(Ball *ball, const float time) const
 {
 
 }

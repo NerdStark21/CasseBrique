@@ -14,14 +14,15 @@ using namespace std;
 class Model
 {
 private:
-    vector<Wall> walls_; // Contient les 4 murs du jeu
-    list<Brick> bricks_; // Contient toutes les briques du jeu
-    Disk disk_; // Contient le disque du jeu
-    Ball ball_; // Contient la balle du jeu
-    Player player_; // Contient les informations sur le joueur
+    vector<Wall> walls_;    // Contient les 4 murs du jeu
+    list<Brick> bricks_;    // Contient toutes les briques du jeu
+    Disk disk_;    // Contient le disque du jeu
+    Ball ball_;    // Contient la balle du jeu
+    Player player_;    // Contient les informations sur le joueur
+    short state_;    // Décrit l'état du jeu (en cours, perdu, gagné)
 
 public:
-    Model(vector<Rect> walls, list<Brick> bricks, Rect disk);
+    Model();
 
     /**
      * @brief updateGame
@@ -30,8 +31,11 @@ public:
      *  temps écoulé depuis la dernière actualisation
      */
     void updateGame(const float time);
-    void createWall(Rect rect, bool isdestructive){walls_.push_back(Wall(rect, isdestructive));}
-    Wall getWall(unsigned int k){return walls_.at(k);}
+    void ballLost();
+    void gameLost();
+    void createWall(Rect stuff, bool isDestructive) {walls_.push_back(Wall(stuff, isDestructive));}
+    void createBrick(Rect stuff) { bricks_.push_back(Brick(stuff)); }
+    Wall getWall(unsigned int k) {return walls_.at(k);}
 };
 
 #endif // MODEL_H

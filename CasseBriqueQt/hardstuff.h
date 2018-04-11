@@ -13,38 +13,49 @@ using namespace cv;
 class HardStuff
 {
 protected:
-    Rect stuff_; // Le rectangle décrivant la position et la taille de l'objet. L'origine est en haut à gauche du jeu.
-    static float depth_; // Profondeur des briques du jeu.
+    Rect stuff_;    // Le rectangle décrivant la position et la taille de l'objet. L'origine est en haut à gauche du jeu.
+    static float depth_;    // Profondeur des briques du jeu.
+
+
 
 public:
     HardStuff(Rect stuff);
 
     /**
      * @brief isTouched
-     * Cette fonction permet de savoir si l'objet est en colision avec la boule ou non
+     *  Cette fonction permet de savoir si l'objet est en colision avec la boule ou non
      *
      * @param ball
      *  Pointeur vers la boule à considérer
      *
      * @return true si la boule a une partie qui touche l'objet et false sinon
      */
-    virtual bool isTouched(const Ball * ball) const = 0;
+    bool isTouched(const Ball * ball) const;
 
     /**
      * @brief updateAngle
-     *  Cette fonction permet de mettre à jour l'attribut angle_ de la ball
+     *  Cette fonction permet de mettre à jour les attributs angle_ et position_ de la ball
      * @param ball
      *  Pointeur vers la boule à mettre à jour
      */
-    virtual void updateAngle(Ball * ball) const = 0;
+    virtual void updateBall(Ball * ball, const float time) const = 0;
 
+
+
+protected:
     /**
-     * @brief updatePosition
-     *  Cette fonction permet de mettre à jour l'attribut position_ de la ball
+     * @brief ballPosition
+     *  Cette fonction permet de connaître la position de la balle par rapport à l'objet.
+     *  La position est considérée en V8.
+     *  Par exemple, si le centre de la boule est en haut à gauche de l'objet, la fonction renverra 0.
+     *  De même, si le centre de la boule est en bas de l'objet, la fonction renverra 5.
+     *
      * @param ball
-     *  Pointeur vers la boule à mettre à jour
+     *  Pointeur vers la boule à considérer.
+     *
+     * @return un nombre entre 0 et 7 correspondant à la position en V8 de la boule par rapport à l'objet.
      */
-    virtual void updatePosition(Ball * ball) const = 0;
+    short ballPosition(const Ball * ball) const;
 };
 
 #endif // HARDSTUFF_H

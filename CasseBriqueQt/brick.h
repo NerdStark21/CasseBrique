@@ -6,13 +6,15 @@
 
 class Brick : public HardStuff
 {
+private:
+    short points_;    // Nombre de points gagnés par le joueur à la destructionde la brique
+
 public:
     Brick(Rect stuff);
+    short getPoints() const { return points_; }
 
     // Les fonctions abstraites de HardStuff
-    virtual bool isTouched(const Ball *) const;
-    virtual void updateAngle(Ball *) const;
-    virtual void updatePosition(Ball *) const;
+    void updateBall(Ball * ball, const float time) const override;
 };
 
 #endif // BRICK_H

@@ -5,19 +5,9 @@ Wall::Wall(Rect stuff, bool isDestructive) : HardStuff(stuff)
     isDestructive_ = isDestructive;
 }
 
-bool Wall::isTouched(const Ball *ball) const
-{
-    return true;
-}
-
-void Wall::updateAngle(Ball *ball) const
+void Wall::updateBall(Ball *ball, const float time) const
 {
 
-}
-
-void Wall::updatePosition(Ball *ball) const
-{
-    int x = stuff_.x;
 }
 
 GLfloat* Wall::getVertices(){
