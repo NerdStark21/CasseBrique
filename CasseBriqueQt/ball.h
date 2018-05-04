@@ -21,6 +21,7 @@ public:
     int getSpeed() const { return speed_; }
     float getAngle() const { return angle_; }
     void setAngle(const float angle) { angle_ = angle; }
+    void setPosition(const int x, const int y);
 
 };
 

@@ -12,9 +12,6 @@ private:
 public:
     Brick(Rect stuff);
     short getPoints() const { return points_; }
-
-    // Les fonctions abstraites de HardStuff
-    void updateBall(Ball * ball, const float time) const override;
 };
 
 #endif // BRICK_H

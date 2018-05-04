@@ -13,7 +13,7 @@ public:
     Disk(Rect stuff, int minAngle, int maxAngle);
 
     // Les fonctions abstraites de HardStuff
-    void updateBall(Ball * ball, const float time) const override;
+    bool isTouched(Ball * ball) const override;
 };
 
 #endif // DISK_H

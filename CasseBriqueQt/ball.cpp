@@ -7,3 +7,8 @@ Ball::Ball(float radius, int speed, float angle)
     speed_ = speed;
     angle_ = angle;
 }
+
+void Ball::setPosition(const int x, const int y)
+{
+    position_ = Point(x, y);
+}

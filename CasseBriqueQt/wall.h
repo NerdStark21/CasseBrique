@@ -12,9 +12,6 @@ public:
     Wall(Rect stuff, bool isDestructive);
     bool getIsDestructive() { return isDestructive_; }
     GLfloat* getVertices();
-
-    // Les fonctions abstraites de HardStuff
-    void updateBall(Ball * ball, const float time) const override;
 };
 
 #endif // WALL_H
