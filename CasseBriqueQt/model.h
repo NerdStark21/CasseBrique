@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <List>
+#include <qdebug.h>
 
 using namespace std;
 
@@ -16,10 +17,10 @@ class Model
 private:
     vector<Wall> walls_;    // Contient les 4 murs du jeu
     list<Brick> bricks_;    // Contient toutes les briques du jeu
-    Disk disk_;    // Contient le disque du jeu
-    Ball ball_;    // Contient la balle du jeu
-    Player player_;    // Contient les informations sur le joueur
-    short state_;    // Décrit l'état du jeu (en cours, perdu, gagné)
+    Disk disk_;             // Contient le disque du jeu
+    Ball ball_;             // Contient la balle du jeu
+    Player player_;         // Contient les informations sur le joueur
+    short state_;           // Décrit l'état du jeu (en cours, perdu, gagné)
 
 public:
     Model();

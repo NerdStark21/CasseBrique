@@ -1,17 +1,6 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2018-03-27T13:47:11
-#
-#-------------------------------------------------
-
-QT += core gui
-#QT += core gui opengl
-#QT += opengl
+# configuration Qt
 QT       += core gui opengl widgets
-CONFIG	 += c++14
 TEMPLATE  = app
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 # ajout des libs au linker
 win32 {
@@ -21,12 +10,11 @@ win32 {
         LIBS     += -lopengl32 -lglu32
     }
 }
-unix {
+else {
         LIBS     += -lGL -lGLU
 }
 
 TARGET = CasseBriqueQt
-TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings

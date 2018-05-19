@@ -9,7 +9,7 @@ float distance(float x1, float y1, float x2, float y2) {
 HardStuff::HardStuff(Rect stuff)
 {
     stuff_ = stuff;
-    depth_ = 7;
+    depth_ = 7.0;
 }
 
 
