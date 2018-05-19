@@ -37,6 +37,7 @@ public:
     void createWall(Rect stuff, bool isDestructive) {walls_.push_back(Wall(stuff, isDestructive));}
     void createBrick(Rect stuff) { bricks_.push_back(Brick(stuff)); }
     Wall getWall(unsigned int k) {return walls_.at(k);}
+    void drawWall();
 };
 
 #endif // MODEL_H

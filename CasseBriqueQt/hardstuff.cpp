@@ -94,8 +94,6 @@ float HardStuff::getAngleToStuff(const Ball *ball, short posV8) const
     return 2 * atan( yVect / (xVect + normeVect));
 }
 
-
-
 bool HardStuff::isTouched(Ball *ball) const
 {
     // abscisse de la balle

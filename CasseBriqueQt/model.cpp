@@ -4,7 +4,7 @@ using namespace std;
 
 Model::Model()
 {
-    disk_ = Disk(Rect(10, 10, 5, 1), 10, 20);
+    //disk_ = Disk(Rect(10, 10, 5, 1), 10, 20);
     state_ = 0;
 
     // Création de tous les murs
@@ -23,6 +23,7 @@ Model::Model()
     walls_.push_back(wallL);
     walls_.push_back(wallR);
 }
+
 
 void Model::updateGame(const float time)
 {
@@ -60,7 +61,8 @@ void Model::updateGame(const float time)
 
 }
 
-void Model::setWall(){
+
+void Model::drawWall(){
     // On va faire afficher les 4 murs
     //Wall wall(Rect(), true);
 
