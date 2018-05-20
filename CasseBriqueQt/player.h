@@ -16,6 +16,7 @@ public:
     int getScore() const { return score_; }
     int getNbBall() const { return nbBall_; }
     void addScore(const int add) { score_ += add; }
+    void ballLost() { nbBall_ --; }
 };
 
 #endif // PLAYER_H
