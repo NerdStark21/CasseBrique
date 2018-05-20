@@ -1,15 +1,19 @@
 #include "hardstuff.h"
 
+float HardStuff::depth_ = 7.0;
+
 float distance(float x1, float y1, float x2, float y2) {
     return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
 }
 
-
+HardStuff::HardStuff()
+{
+    stuff_ = Rect(0, 0, 0, 0);
+}
 
 HardStuff::HardStuff(Rect stuff)
 {
     stuff_ = stuff;
-    depth_ = 7;
 }
 
 
@@ -51,7 +55,8 @@ short HardStuff::ballPosition(const Ball *ball) const
     if (xb < stuff_.x) {
         return 7;
     }
-    throw new Exception();
+
+    throw std::logic_error("La fonction ballPosition n'est pas censée arriver ici");
 }
 
 
@@ -93,8 +98,6 @@ float HardStuff::getAngleToStuff(const Ball *ball, short posV8) const
 
     return 2 * atan( yVect / (xVect + normeVect));
 }
-
-
 
 bool HardStuff::isTouched(Ball *ball) const
 {
@@ -193,4 +196,6 @@ bool HardStuff::isTouched(Ball *ball) const
         return false;
 
     }
+
+    throw std::logic_error("La fonction ballPosition n'est pas censée arriver ici");
 }

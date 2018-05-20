@@ -5,10 +5,10 @@
 using namespace cv;
 
 // Declarations des constantes
-// 1600 - 900
-const unsigned int WIN_WIDTH  = 1000;
-const unsigned int WIN_HEIGHT = 600;
-const float MAX_DIMENSION     = 50.0f;
+const unsigned int WIN_WIDTH  = 400;
+const unsigned int WIN_HEIGHT = 400;
+const float ASPECT_RATIO      = static_cast<float>(WIN_WIDTH) / WIN_HEIGHT;
+const float ORTHO_DIM         = 50.0f;
 
 // Constructeur
 MyGLWidget::MyGLWidget(QWidget * parent) : QGLWidget(parent)
@@ -16,45 +16,31 @@ MyGLWidget::MyGLWidget(QWidget * parent) : QGLWidget(parent)
     // Reglage de la taille/position
     setFixedSize(WIN_WIDTH, WIN_HEIGHT);
     move(QApplication::desktop()->screen()->rect().center() - rect().center());
+    model_ = new Model();
 }
 
 // Fonction d'initialisation
 void MyGLWidget::initializeGL()
 {
     // Reglage de la couleur de fond
-    glClearColor(0.1f, 0.1f, 0.1f, 0.0f);
+    glClearColor(0.5, 0.5, 0.5, 1);
 
-    Rect coordU(0, 10, 10, 0);
-    Rect coordD(0, 0, 10, 0);
-    Rect coordL(0, 0, 0, 10);
-    Rect coordR(0, 10, 0, 10);
-
-    model_ = new Model();
-
-    model_->createWall(coordU, false);
-    model_->createWall(coordD, true);
-    model_->createWall(coordR, false);
-    model_->createWall(coordL, false);
+    // Activation du zbuffer
+    glEnable(GL_DEPTH_TEST);
 }
 
 // Fonction de redimensionnement
 void MyGLWidget::resizeGL(int width, int height)
 {
-    width_ = width;
-    height_ = height;
-
     // Definition du viewport (zone d'affichage)
-    glViewport(0, 0, WIN_WIDTH, WIN_HEIGHT);
+    glViewport(	0, 0, 400, 400);
 
     // Definition de la matrice de projection
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
+    glOrtho(-ORTHO_DIM * ASPECT_RATIO, ORTHO_DIM * ASPECT_RATIO, -ORTHO_DIM, ORTHO_DIM, -2.0f * ORTHO_DIM, 2.0f * ORTHO_DIM);
 
-    if(width != 0)
-        glOrtho(-MAX_DIMENSION, MAX_DIMENSION, -MAX_DIMENSION * height / static_cast<float>(width),
-                MAX_DIMENSION * height / static_cast<float>(width), -MAX_DIMENSION * 2.0f,
-                MAX_DIMENSION * 2.0f);
-
+    // Definition de la matrice de modele
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }
@@ -62,19 +48,38 @@ void MyGLWidget::resizeGL(int width, int height)
 // Fonction d'affichage
 void MyGLWidget::paintGL()
 {
+    glEnable(GL_DEPTH_TEST);
+
     // Reinitialisation des tampons
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    for(unsigned int k=0;k<4;k++){
-        glEnableClientState(GL_VERTEX_ARRAY); // Active le tableau permettant de définir les vertices
-        glVertexPointer(2, GL_FLOAT, 0, vertices); // 2 coordonnées pour chaque vertex
-        glDrawArrays(GL_LINES, 0, 3*1); // Dessine 2 triangles ayant 3 vertices chacun
-        glDisableClientState(GL_VERTEX_ARRAY); // Désactive le tableau
-    }
-
-
-    // Definition de la position de la camera
-    // Caméra / Cible / Vecteur vertical
+    // Definition de la matrice modelview
+    glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt(-10, 0, 0, 0, 0, 0, 0, 0, 1);
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(80.0, (GLdouble)WIN_WIDTH/(GLdouble)WIN_WIDTH, 0.1, 12.0);
+
+    // Caméra / Cible / Vecteur vertical
+    glPushMatrix();
+    gluLookAt(0, 0, -10,
+              0, 0, 0,
+              0, 1, 0);
+
+    // Affichage d'un repère
+    glBegin(GL_LINES);
+    glColor3ub(255,0,0);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(10.0, 0.0, 0.0);
+
+    glColor3ub(0,255,0);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(0.0, 10.0, 0.0);
+
+    glColor3ub(0,0,255);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(0.0, 0.0, 10.0);
+    glEnd();
+
 }

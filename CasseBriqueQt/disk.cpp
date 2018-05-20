@@ -1,5 +1,11 @@
 #include "disk.h"
 
+Disk::Disk()
+{
+    minAngle_ = 3.141592;
+    maxAngle_ = 0;
+}
+
 Disk::Disk(Rect stuff, int minAngle, int maxAngle) : HardStuff(stuff)
 {
     minAngle_ = minAngle;

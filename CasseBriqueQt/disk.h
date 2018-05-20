@@ -10,6 +10,7 @@ private:
     int maxAngle_;    // Maximum des angles de rebond
 
 public:
+    Disk();
     Disk(Rect stuff, int minAngle, int maxAngle);
 
     // Les fonctions abstraites de HardStuff

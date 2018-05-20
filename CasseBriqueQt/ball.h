@@ -12,9 +12,10 @@ private:
     Point position_;    // Position de la balle. L'origine est en bas à gauche et les axes sont usuels.
     float radius_;    // Rayon de la balle
     int speed_;    // Vitesse de la balle en pixels par seconde
-    float angle_;    // Direction de la balle
+    float angle_;    // Direction de la balle en radian
 
 public:
+    Ball();
     Ball(float radius, int speed, float angle);
     Point getPosition() const { return position_; }
     float getRadius() const { return radius_; }

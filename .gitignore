@@ -1,5 +1,7 @@
 *.pro.user
 *.o
+*.obj
+*.pro
 
 /build-CasseBriqueQt-Desktop_Qt_5_10_0_MinGW_32bit-Debug
 *.autosave

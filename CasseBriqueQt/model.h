@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <List>
+#include <qdebug.h>
 
 using namespace std;
 
@@ -16,10 +17,10 @@ class Model
 private:
     vector<Wall> walls_;    // Contient les 4 murs du jeu
     list<Brick> bricks_;    // Contient toutes les briques du jeu
-    Disk disk_;    // Contient le disque du jeu
-    Ball ball_;    // Contient la balle du jeu
-    Player player_;    // Contient les informations sur le joueur
-    short state_;    // Décrit l'état du jeu (en cours, perdu, gagné)
+    Disk disk_;             // Contient le disque du jeu
+    Ball ball_;             // Contient la balle du jeu
+    Player player_;         // Contient les informations sur le joueur
+    short state_;           // Décrit l'état du jeu (en cours, perdu, gagné)
 
 public:
     Model();
@@ -36,6 +37,7 @@ public:
     void createWall(Rect stuff, bool isDestructive) {walls_.push_back(Wall(stuff, isDestructive));}
     void createBrick(Rect stuff) { bricks_.push_back(Brick(stuff)); }
     Wall getWall(unsigned int k) {return walls_.at(k);}
+    void drawWall();
 };
 
 #endif // MODEL_H

@@ -10,6 +10,7 @@ private:
     short points_;    // Nombre de points gagnés par le joueur à la destructionde la brique
 
 public:
+    Brick();
     Brick(Rect stuff);
     short getPoints() const { return points_; }
 };
