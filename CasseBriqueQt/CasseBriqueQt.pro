@@ -38,7 +38,11 @@ SOURCES += \
     player.cpp \
     myglwidget.cpp \
     model.cpp \
+<<<<<<< HEAD
     detection.cpp
+=======
+    cocou.cpp
+>>>>>>> De la merde
 
 HEADERS += \
     hardstuff.h \

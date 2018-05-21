@@ -32,7 +32,6 @@ MyGLWidget::MyGLWidget(QWidget * parent) : QGLWidget(parent)
 // Fonction d'initialisation
 void MyGLWidget::initializeGL()
 {
-    qDebug()<<"Mise en place de la couleur"<<endl;
     // Reglage de la couleur de fond
     glClearColor(0, 0, 0, 1);
 
@@ -60,6 +59,10 @@ void MyGLWidget::resizeGL(int width, int height)
 // Fonction d'affichage
 void MyGLWidget::paintGL()
 {
+<<<<<<< HEAD
+=======
+    qDebug()<<"Paint !"<<endl;
+>>>>>>> De la merde
     // Reinitialisation des tampons
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -68,7 +71,12 @@ void MyGLWidget::paintGL()
     glLoadIdentity();
 
     // Caméra / Cible / Vecteur vertical
+<<<<<<< HEAD
     gluLookAt(-5, -5, -13,
+=======
+    glPushMatrix();
+    gluLookAt(0, 0, -10,
+>>>>>>> De la merde
               0, 0, 0,
               0, 1, 0);
 

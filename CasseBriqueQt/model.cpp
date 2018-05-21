@@ -7,12 +7,22 @@ Model::Model()
     qDebug()<<"Création du model"<<endl;
     //disk_ = Disk(Rect(10, 10, 5, 1), 10, 20);
     state_ = 0;
+<<<<<<< HEAD
     int cote = 10;
     // Création de tous les murs
     Rect coordU(0, 1, cote, 1);
     Rect coordD(0, cote, cote, 1);
     Rect coordL(-1, 0, 1, cote);
     Rect coordR(0, cote, 1, cote);
+=======
+    int cote = 50;
+    int epaisseur = 10;
+    // Création de tous les murs
+    Rect coordU(0, cote, cote, epaisseur);
+    Rect coordD(0, 0, cote, epaisseur);
+    Rect coordL(0, 0, epaisseur, cote);
+    Rect coordR(0, cote, epaisseur, cote);
+>>>>>>> De la merde
 
     Wall wallU(coordU, false);
     Wall wallD(coordD, true);
