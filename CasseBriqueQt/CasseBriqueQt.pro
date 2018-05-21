@@ -37,7 +37,8 @@ SOURCES += \
     ball.cpp \
     player.cpp \
     myglwidget.cpp \
-    model.cpp
+    model.cpp \
+    detection.cpp
 
 HEADERS += \
     hardstuff.h \
@@ -47,7 +48,8 @@ HEADERS += \
     ball.h \
     player.h \
     myglwidget.h \
-    model.h
+    model.h \
+    detection.h
 
 FORMS +=
 
