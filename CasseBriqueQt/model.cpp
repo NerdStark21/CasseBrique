@@ -90,5 +90,5 @@ void Model::ballLost()
 
 void Model::gameLost()
 {
-
+    state_ = 2;
 }

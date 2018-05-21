@@ -1,6 +1,6 @@
 #include "disk.h"
 
-Disk::Disk()
+Disk::Disk() : HardStuff()
 {
     minAngle_ = 3.141592;
     maxAngle_ = 0;

@@ -2,7 +2,7 @@
 
 Ball::Ball()
 {
-    position_ = Point(3, 4);
+    position_ = Point(9, 5);
     radius_ = 15;
     speed_ = 30;
     angle_ = 3.141592 / 4;
