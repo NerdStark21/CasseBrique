@@ -5,8 +5,8 @@
 using namespace cv;
 
 // Declarations des constantes
-const unsigned int WIN_WIDTH  = 400;
-const unsigned int WIN_HEIGHT = 400;
+const unsigned int WIN_WIDTH  = 800;
+const unsigned int WIN_HEIGHT = 600;
 const float ASPECT_RATIO      = static_cast<float>(WIN_WIDTH) / WIN_HEIGHT;
 const float ORTHO_DIM         = 50.0f;
 
@@ -22,6 +22,7 @@ MyGLWidget::MyGLWidget(QWidget * parent) : QGLWidget(parent)
 // Fonction d'initialisation
 void MyGLWidget::initializeGL()
 {
+    qDebug()<<"Mise en place de la couleur"<<endl;
     // Reglage de la couleur de fond
     glClearColor(0.5, 0.5, 0.5, 1);
 
@@ -33,7 +34,7 @@ void MyGLWidget::initializeGL()
 void MyGLWidget::resizeGL(int width, int height)
 {
     // Definition du viewport (zone d'affichage)
-    glViewport(	0, 0, 400, 400);
+    glViewport(	0, 0, WIN_WIDTH, WIN_HEIGHT);
 
     // Definition de la matrice de projection
     glMatrixMode(GL_PROJECTION);
@@ -63,23 +64,28 @@ void MyGLWidget::paintGL()
 
     // Caméra / Cible / Vecteur vertical
     glPushMatrix();
-    gluLookAt(0, 0, -10,
+    gluLookAt(0, 0, -11,
               0, 0, 0,
               0, 1, 0);
 
-    // Affichage d'un repère
-    glBegin(GL_LINES);
-    glColor3ub(255,0,0);
-    glVertex3f(0.0, 0.0, 0.0);
-    glVertex3f(10.0, 0.0, 0.0);
+    bool affichageRepere = false;
+    if(affichageRepere){
+        // Affichage d'un repère
+        glBegin(GL_LINES);
+        glColor3ub(255,0,0);
+        glVertex3f(0.0, 0.0, 0.0);
+        glVertex3f(10.0, 0.0, 0.0);
 
-    glColor3ub(0,255,0);
-    glVertex3f(0.0, 0.0, 0.0);
-    glVertex3f(0.0, 10.0, 0.0);
+        glColor3ub(0,255,0);
+        glVertex3f(0.0, 0.0, 0.0);
+        glVertex3f(0.0, 10.0, 0.0);
 
-    glColor3ub(0,0,255);
-    glVertex3f(0.0, 0.0, 0.0);
-    glVertex3f(0.0, 0.0, 10.0);
-    glEnd();
+        glColor3ub(0,0,255);
+        glVertex3f(0.0, 0.0, 0.0);
+        glVertex3f(0.0, 0.0, 10.0);
+        glEnd();
+    }
 
+    model_->drawWall();
+    model_->drawBrick();
 }

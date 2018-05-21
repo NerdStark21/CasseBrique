@@ -13,6 +13,8 @@ public:
     Brick();
     Brick(Rect stuff);
     short getPoints() const { return points_; }
+    void getVertices(GLfloat listVertices[]);
+    void drawBrick();
 };
 
 #endif // BRICK_H
