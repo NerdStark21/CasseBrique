@@ -5,6 +5,7 @@
 #include <QDesktopWidget>
 #include <QtOpenGL/QGLWidget>
 #include <QDebug>
+#include <QTimer>
 #include <GL/glu.h>
 #include "wall.h"
 #include "model.h"
@@ -29,6 +30,8 @@ private:
     int width_;
     int height_;
     Model* model_;
+    float m_TimeElapsed { 0.0f };
+    QTimer m_AnimationTimer;
 };
 
 

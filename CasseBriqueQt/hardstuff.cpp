@@ -1,6 +1,6 @@
 #include "hardstuff.h"
 
-float HardStuff::depth_ = 7.0;
+float HardStuff::depth_ = 1.0;
 
 float distance(float x1, float y1, float x2, float y2) {
     return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));

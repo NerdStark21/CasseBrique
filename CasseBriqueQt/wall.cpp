@@ -5,6 +5,7 @@ Wall::Wall(Rect stuff, bool isDestructive) : HardStuff(stuff)
     isDestructive_ = isDestructive;
 }
 
+/*
 void Wall::drawWall(){
     qDebug()<<"Ca draw un wall"<<endl;
 
@@ -23,6 +24,22 @@ void Wall::drawWall(){
     glDrawArrays(GL_LINE_LOOP, 0, 4); // Dessine 6 triangles ayant 4 vertices chacun
     glDisableClientState(GL_COLOR_ARRAY); // Désactive le tableau
     glDisableClientState(GL_VERTEX_ARRAY); // Désactive le tableau
+}*/
+
+void Wall::drawWall() {
+    GLfloat vertices[72];
+    getVertices(vertices);
+
+    glPushMatrix();
+    glLoadIdentity();
+    glBegin(GL_QUADS);
+    glColor3ub(15, 15, 15);
+    for (short f = 0; f < 6; f++) { // Les faces du parallélépipède rectangle
+        for (short s = 0; s < 4; s++) { // Les sommets de la face
+            glVertex3f(vertices[6 * f + 4 * s], vertices[6 * f + 4 * s + 1], vertices[6 * f + 4 * s + 2]);
+        }
+    }
+    glPopMatrix();
 }
 
 void Wall::getVertices(GLfloat listVertices[72]){

@@ -40,11 +40,7 @@ public:
         { bricks_.push_back(Brick(stuff)); }
     Wall getWall(unsigned int k)
         {return walls_.at(k);}
-    void drawWall(){
-        vector<Wall>::iterator itw;
-        for (itw = walls_.begin(); itw != walls_.end(); itw++)
-            itw->drawWall();
-    }
+    void drawWall();
     void drawBrick(){
         vector<Brick>::iterator itw;
         for (itw = bricks_.begin(); itw != bricks_.end(); itw++)

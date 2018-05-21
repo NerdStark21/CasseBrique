@@ -7,11 +7,11 @@ Model::Model()
     qDebug()<<"Création du model"<<endl;
     //disk_ = Disk(Rect(10, 10, 5, 1), 10, 20);
     state_ = 0;
-    int cote = 50;
+    int cote = 10;
     // Création de tous les murs
-    Rect coordU(0, cote, cote, 1);
-    Rect coordD(0, 0, cote, 1);
-    Rect coordL(0, 0, 1, cote);
+    Rect coordU(0, 1, cote, 1);
+    Rect coordD(0, cote, cote, 1);
+    Rect coordL(-1, 0, 1, cote);
     Rect coordR(0, cote, 1, cote);
 
     Wall wallU(coordU, false);
@@ -72,11 +72,12 @@ void Model::drawWall() {
     // On va faire afficher les 4 murs
     //Wall wall(Rect(), true);
 
-    for(unsigned int k=0;k<4;k++){
+    for(unsigned int k = 0 ; k < 4 ; k++){
         qDebug()<<"Ca marche !";
         Wall wall = getWall(k);
         qDebug()<<"Ca marche !";
-        GLfloat* vertices = wall.getVertices();
+        GLfloat vertices[72];
+        wall.getVertices(vertices);
         qDebug()<<"Ca marche !";
         GLfloat listVertices[72];
         for(int k=0;k<72;k++){
@@ -91,6 +92,26 @@ void Model::drawWall() {
     }
 }*/
 
+/*
+void Model::drawWall() {
+
+    vector<Wall>::iterator it;
+    for (it = walls_.begin(); it != walls_.end(); it++) {
+        GLfloat vertices[72];
+        it->getVertices(vertices);
+
+        glPushMatrix();
+        glLoadIdentity();
+        glBegin(GL_QUADS);
+        glColor3ub(15, 15, 15);
+        for (short f = 0; f < 6; f++) { // Les faces du parallélépipède rectangle
+            for (short s = 0; s < 4; s++) { // Les sommets de la face
+                glVertex3f(vertices[6 * f + 4 * s], vertices[6 * f + 4 * s + 1], vertices[6 * f + 4 * s + 2]);
+            }
+        }
+    }
+}*/
+
 void Model::ballLost()
 {
     player_.ballLost();
@@ -99,4 +120,11 @@ void Model::ballLost()
 void Model::gameLost()
 {
     state_ = 2;
+}
+
+void Model::drawWall()
+{
+    vector<Wall>::iterator itw;
+    for (itw = walls_.begin(); itw != walls_.end(); itw++)
+        itw->drawWall();
 }
