@@ -4,14 +4,15 @@ using namespace std;
 
 Model::Model()
 {
+    qDebug()<<"Création du model"<<endl;
     //disk_ = Disk(Rect(10, 10, 5, 1), 10, 20);
     state_ = 0;
-
+    int cote = 50;
     // Création de tous les murs
-    Rect coordU(0, 10, 10, 1);
-    Rect coordD(0, 0, 10, 1);
-    Rect coordL(0, 0, 1, 10);
-    Rect coordR(0, 10, 1, 10);
+    Rect coordU(0, cote, cote, 1);
+    Rect coordD(0, 0, cote, 1);
+    Rect coordL(0, 0, 1, cote);
+    Rect coordR(0, cote, 1, cote);
 
     Wall wallU(coordU, false);
     Wall wallD(coordD, true);
@@ -22,8 +23,15 @@ Model::Model()
     walls_.push_back(wallD);
     walls_.push_back(wallL);
     walls_.push_back(wallR);
-}
 
+    // Création de toutes les briques
+    for(int ligne=0;ligne<5;ligne++){
+        for(int colonne=0;colonne<7;colonne++){
+            Brick brick(Rect(colonne*15+1, ligne*5+1, 15, 5));
+            bricks_.push_back(brick);
+        }
+    }
+}
 
 void Model::updateGame(const float time)
 {
@@ -45,7 +53,7 @@ void Model::updateGame(const float time)
     delete &itw;
 
     // Gestion de la colision des briques
-    list<Brick>::iterator itb;
+    vector<Brick>::iterator itb;
     for (itb = bricks_.begin(); itb != bricks_.end(); itb++) {
         if (itb->isTouched(&ball_)) {
             player_.addScore(itb->getPoints());
@@ -59,7 +67,7 @@ void Model::updateGame(const float time)
 
 }
 
-
+/*
 void Model::drawWall() {
     // On va faire afficher les 4 murs
     //Wall wall(Rect(), true);
@@ -81,7 +89,7 @@ void Model::drawWall() {
         glDisableClientState(GL_VERTEX_ARRAY); // Désactive le tableau
         qDebug()<<"Ca marche !";
     }
-}
+}*/
 
 void Model::ballLost()
 {

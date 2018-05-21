@@ -12,7 +12,8 @@ public:
     Wall();
     Wall(Rect stuff, bool isDestructive);
     bool getIsDestructive() { return isDestructive_; }
-    GLfloat* getVertices();
+    void getVertices(GLfloat listVertices[]);
+    void drawWall();
 };
 
 #endif // WALL_H

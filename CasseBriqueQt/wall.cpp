@@ -5,8 +5,27 @@ Wall::Wall(Rect stuff, bool isDestructive) : HardStuff(stuff)
     isDestructive_ = isDestructive;
 }
 
-GLfloat* Wall::getVertices(){
-    GLfloat listVertices[72];
+void Wall::drawWall(){
+    qDebug()<<"Ca draw un wall"<<endl;
+
+    //Vertices avec array
+    glEnableClientState(GL_VERTEX_ARRAY); // Active le tableau permettant de définir les vertices
+    GLfloat vertices[72];
+    getVertices(vertices);
+    glVertexPointer(3, GL_FLOAT, 0, vertices); // 3 coordonnées pour chaque vertex
+    glEnableClientState(GL_COLOR_ARRAY);
+    //Générateur de couleur aléatoire pour chaque vertice
+    GLfloat colors[8];
+    for(int k=0;k<8;k++){
+        colors[k] = rand()/(float)RAND_MAX;
+    }
+    glColorPointer(3, GL_FLOAT, 0, colors);
+    glDrawArrays(GL_LINE_LOOP, 0, 4); // Dessine 6 triangles ayant 4 vertices chacun
+    glDisableClientState(GL_COLOR_ARRAY); // Désactive le tableau
+    glDisableClientState(GL_VERTEX_ARRAY); // Désactive le tableau
+}
+
+void Wall::getVertices(GLfloat listVertices[72]){
     // Les groupes de 3 sont les coord xyz
     // Carré 1
     listVertices[0] = stuff_.x;
@@ -38,7 +57,7 @@ GLfloat* Wall::getVertices(){
     listVertices[19] = stuff_.y + stuff_.height;
     listVertices[20] = depth_;
 
-    listVertices[21] = stuff_.x;
+    listVertices[21] = stuff_.x + stuff_.width; // +
     listVertices[22] = stuff_.y + stuff_.height;
     listVertices[23] = 0;
 
@@ -109,6 +128,4 @@ GLfloat* Wall::getVertices(){
     listVertices[69] = stuff_.x + stuff_.width;
     listVertices[70] = stuff_.y;
     listVertices[71] = 0;
-
-    return listVertices;
 }

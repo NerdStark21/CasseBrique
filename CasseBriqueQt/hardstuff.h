@@ -6,6 +6,8 @@
 #include <QtOpenGL/QGLWidget>
 #include <GL/glu.h>
 #include <math.h>
+#include <vector>
+#include <qdebug.h>
 
 #include "ball.h"
 

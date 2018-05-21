@@ -5,6 +5,8 @@
 
 int main(int argc, char *argv[])
 {
+    qDebug()<<"READY"<<endl;
+
     // Creation de l'application QT
     QApplication app(argc, argv);
 
