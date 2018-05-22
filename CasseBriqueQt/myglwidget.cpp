@@ -97,15 +97,8 @@ void MyGLWidget::paintGL()
               0.0,0.0,0.0,
               0.0,-1.0,0.0);
 
-<<<<<<< HEAD
-    //model_->move(vect.x);
-    //model_->drawWall();
-    //model_->drawBrick();
-    //model_->drawDisk();
-=======
     model_->move(vect.x);
     model_->drawWall();
     model_->drawBrick();
     model_->drawDisk();
->>>>>>> 2b511b94d4cd5abc33170c30903697126921a862
 }
