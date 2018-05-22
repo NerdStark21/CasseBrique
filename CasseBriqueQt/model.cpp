@@ -34,6 +34,10 @@ Model::Model()
             bricks_.push_back(brick);
         }
     }
+
+    Rect coordDisk(-20, -cote/2+10, 40, 10);
+    disk_ = Disk(coordDisk, -45, 45);
+
 }
 
 void Model::updateGame(const float time)

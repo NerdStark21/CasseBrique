@@ -11,7 +11,6 @@ const unsigned int WIN_HEIGHT = 700;
 const float ASPECT_RATIO      = static_cast<float>(WIN_WIDTH) / WIN_HEIGHT;
 const float ORTHO_DIM         = 50.0f;
 */
-
 const unsigned int WIN_WIDTH  = 15;
 const unsigned int WIN_HEIGHT = 6;
 const float MAX_DIMENSION     = 200.0f;
@@ -72,11 +71,12 @@ void MyGLWidget::resizeGL(int width, int height)
 // Fonction d'affichage
 void MyGLWidget::paintGL()
 {
+    Point vect;
     int sensibilite = 5;
     bool lol = true;
     if(lol){
         // Acquisition de la caméra
-        Point vect = detection_->drawImage();
+        vect = detection_->drawImage();
         //cerr<<vect.x<<"   "<<vect.y<<endl;
 
         if(vect.x>sensibilite){cerr<<"droite  "<<vect.x<<endl;}
@@ -96,71 +96,9 @@ void MyGLWidget::paintGL()
     gluLookAt(0.0,0.0,10,
               0.0,0.0,0.0,
               0.0,-1.0,0.0);
-    /*
-    bool affichageRepere = false;
-    if(affichageRepere){
-        // Affichage d'un repère
-        glBegin(GL_LINES);
-        glColor3ub(255,0,0);
-        glVertex3f(0.0, 0.0, 0.0);
-        glVertex3f(-10.0, 0.0, 0.0);
 
-        glColor3ub(0,255,0);
-        glVertex3f(0.0, 0.0, 0.0);
-        glVertex3f(0.0, -10.0, 0.0);
-
-        glColor3ub(0,0,255);
-        glVertex3f(0.0, 0.0, 0.0);
-        glVertex3f(0.0, 0.0, -10.0);
-        glEnd();
-    }
-
-    glPushMatrix();
-    glBegin(GL_QUADS);
-    glColor3ub(0,0,255);
-    glVertex3f(-1.0f, -1.0f, 1.0f);
-    glVertex3f( 1.0f, -1.0f, 1.0f);
-    glVertex3f( 1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, 1.0f, 1.0f);
-
-    glColor3ub(255,0,255);
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-    glVertex3f(-1.0f, 1.0f, -1.0f);
-    glVertex3f( 1.0f, 1.0f, -1.0f);
-    glVertex3f( 1.0f, -1.0f, -1.0f);
-
-    glColor3ub(255,0,0);
-    glVertex3f(-1.0f, 1.0f, -1.0f);
-    glVertex3f(-1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-
-    glColor3ub(0,255,255);
-    glVertex3f(1.0f, 1.0f, -1.0f);
-    glVertex3f( 1.0f, -1.0f, -1.0f);
-    glVertex3f( 1.0f, -1.0f, 1.0f);
-    glVertex3f( 1.0f, 1.0f, 1.0f);
-
-    glColor3ub(0,255,0);
-    glVertex3f( 1.0f, -1.0f, -1.0f);
-    glVertex3f( 1.0f, -1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-
-    glColor3ub(255,255,0);
-    glVertex3f(1.0f, 1.0f, -1.0f);
-    glVertex3f(1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, 1.0f, -1.0f);
-
-
-
-    glEnd();
-    // Matrice de translation
-    */
-
+    model_->move(vect.x);
     model_->drawWall();
     model_->drawBrick();
-
-    //glPopMatrix();
+    model_->drawDisk();
 }

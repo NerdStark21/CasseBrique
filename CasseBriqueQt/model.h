@@ -16,7 +16,7 @@ class Model
 {
 private:
     vector<Wall> walls_;    // Contient les 4 murs du jeu
-    vector<Brick> bricks_;    // Contient toutes les briques du jeu
+    vector<Brick> bricks_;  // Contient toutes les briques du jeu
     Disk disk_;             // Contient le disque du jeu
     Ball ball_;             // Contient la balle du jeu
     Player player_;         // Contient les informations sur le joueur
@@ -31,6 +31,7 @@ public:
      * @param time
      *  temps écoulé depuis la dernière actualisation
      */
+    void move(int deplacement){disk_.move(deplacement);}
     void updateGame(const float time);
     void ballLost();
     void gameLost();
