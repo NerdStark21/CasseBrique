@@ -60,6 +60,19 @@ void MyGLWidget::resizeGL(int width, int height)
 // Fonction d'affichage
 void MyGLWidget::paintGL()
 {
+    int sensibilite = 5;
+    bool lol = true;
+    if(lol){
+        // Acquisition de la caméra
+        Point vect = detection_->drawImage();
+        //cerr<<vect.x<<"   "<<vect.y<<endl;
+
+        if(vect.x>sensibilite){cerr<<"droite  "<<vect.x<<endl;}
+        else if(vect.x<-sensibilite){cerr<<"gauche  "<<vect.x<<endl;}
+        else{cerr<<"Pas bouger"<<endl;}
+    }
+
+
     // Reinitialisation des tampons
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 

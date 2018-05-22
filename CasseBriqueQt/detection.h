@@ -22,7 +22,6 @@ private:
 
 public:
     Detection();
-    void Detection2();
     Point drawImage();
 };
 
