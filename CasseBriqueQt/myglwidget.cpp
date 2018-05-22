@@ -96,68 +96,6 @@ void MyGLWidget::paintGL()
     gluLookAt(0.0,0.0,10,
               0.0,0.0,0.0,
               0.0,-1.0,0.0);
-    /*
-    bool affichageRepere = false;
-    if(affichageRepere){
-        // Affichage d'un repère
-        glBegin(GL_LINES);
-        glColor3ub(255,0,0);
-        glVertex3f(0.0, 0.0, 0.0);
-        glVertex3f(-10.0, 0.0, 0.0);
-
-        glColor3ub(0,255,0);
-        glVertex3f(0.0, 0.0, 0.0);
-        glVertex3f(0.0, -10.0, 0.0);
-
-        glColor3ub(0,0,255);
-        glVertex3f(0.0, 0.0, 0.0);
-        glVertex3f(0.0, 0.0, -10.0);
-        glEnd();
-    }
-
-    glPushMatrix();
-    glBegin(GL_QUADS);
-    glColor3ub(0,0,255);
-    glVertex3f(-1.0f, -1.0f, 1.0f);
-    glVertex3f( 1.0f, -1.0f, 1.0f);
-    glVertex3f( 1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, 1.0f, 1.0f);
-
-    glColor3ub(255,0,255);
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-    glVertex3f(-1.0f, 1.0f, -1.0f);
-    glVertex3f( 1.0f, 1.0f, -1.0f);
-    glVertex3f( 1.0f, -1.0f, -1.0f);
-
-    glColor3ub(255,0,0);
-    glVertex3f(-1.0f, 1.0f, -1.0f);
-    glVertex3f(-1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-
-    glColor3ub(0,255,255);
-    glVertex3f(1.0f, 1.0f, -1.0f);
-    glVertex3f( 1.0f, -1.0f, -1.0f);
-    glVertex3f( 1.0f, -1.0f, 1.0f);
-    glVertex3f( 1.0f, 1.0f, 1.0f);
-
-    glColor3ub(0,255,0);
-    glVertex3f( 1.0f, -1.0f, -1.0f);
-    glVertex3f( 1.0f, -1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-
-    glColor3ub(255,255,0);
-    glVertex3f(1.0f, 1.0f, -1.0f);
-    glVertex3f(1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, 1.0f, -1.0f);
-
-
-
-    glEnd();
-    // Matrice de translation
-    */
 
     model_->drawWall();
     model_->drawBrick();

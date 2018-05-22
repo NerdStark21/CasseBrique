@@ -60,7 +60,7 @@ void Model::updateGame(const float time)
     for (itb = bricks_.begin(); itb != bricks_.end(); itb++) {
         if (itb->isTouched(&ball_)) {
             player_.addScore(itb->getPoints());
-            bricks_.erase(itb);
+            itb->destroy();
         }
     }
     delete &itb;
@@ -69,51 +69,6 @@ void Model::updateGame(const float time)
     disk_.isTouched(&ball_);
 
 }
-
-/*
-void Model::drawWall() {
-    // On va faire afficher les 4 murs
-    //Wall wall(Rect(), true);
-
-    for(unsigned int k = 0 ; k < 4 ; k++){
-        qDebug()<<"Ca marche !";
-        Wall wall = getWall(k);
-        qDebug()<<"Ca marche !";
-        GLfloat vertices[72];
-        wall.getVertices(vertices);
-        qDebug()<<"Ca marche !";
-        GLfloat listVertices[72];
-        for(int k=0;k<72;k++){
-            listVertices[k] = *(vertices + k);
-        }
-        qDebug()<<"Ca marche !";
-        glEnableClientState(GL_VERTEX_ARRAY); // Active le tableau permettant de définir les vertices
-        glVertexPointer(3, GL_FLOAT, 0, listVertices); // 3 coordonnées pour chaque vertex
-        glDrawArrays(GL_QUADS, 0, 4*1);
-        glDisableClientState(GL_VERTEX_ARRAY); // Désactive le tableau
-        qDebug()<<"Ca marche !";
-    }
-}*/
-
-/*
-void Model::drawWall() {
-
-    vector<Wall>::iterator it;
-    for (it = walls_.begin(); it != walls_.end(); it++) {
-        GLfloat vertices[72];
-        it->getVertices(vertices);
-
-        glPushMatrix();
-        glLoadIdentity();
-        glBegin(GL_QUADS);
-        glColor3ub(15, 15, 15);
-        for (short f = 0; f < 6; f++) { // Les faces du parallélépipède rectangle
-            for (short s = 0; s < 4; s++) { // Les sommets de la face
-                glVertex3f(vertices[6 * f + 4 * s], vertices[6 * f + 4 * s + 1], vertices[6 * f + 4 * s + 2]);
-            }
-        }
-    }
-}*/
 
 void Model::ballLost()
 {
@@ -124,3 +79,30 @@ void Model::gameLost()
 {
     state_ = 2;
 }
+
+void Model::drawWall()
+{
+    vector<Wall>::iterator itw;
+    for (itw = walls_.begin(); itw != walls_.end(); itw++)
+        itw->drawWall();
+}
+
+void Model::drawBrick()
+{
+    vector<Brick>::iterator itw;
+    for (itw = bricks_.begin(); itw != bricks_.end(); itw++)
+        itw->drawBrick();
+}
+
+void Model::drawBall()
+{/*
+    //GLUquadric* quadrique = gluNewQuadric();
+    glPushMatrix();
+    glColor3ub(255, 150, 130);
+    //glTranslatef(ball_.getPosition().x, ball_.getPosition().y, - ball_.getRadius());
+    //gluQuadricDrawStyle(quadrique, GLU_FILL);
+    //gluSphere(quadrique, ball_.getRadius(), 20, 20);
+    //gluDeleteQuadric(quadrique);
+    glPopMatrix();
+*/}
+

@@ -11,7 +11,7 @@ void Brick::drawBrick(){
     glPushMatrix();
     glLoadIdentity();
     glBegin(GL_QUADS);
-    glColor3ub(15, 15, 15);
+    glColor3ub(255, 0, 0);
     /*
     for (short f = 0; f < 6; f++) { // Les faces du parallélépipède rectangle
         for (short s = 0; s < 4; s++) { // Les sommets de la face
@@ -51,24 +51,6 @@ void Brick::drawBrick(){
 
     glEnd();
     glPopMatrix();
-
-    /*
-    //Vertices avec array
-    glEnableClientState(GL_VERTEX_ARRAY); // Active le tableau permettant de définir les vertices
-    GLfloat vertices[72];
-    getVertices(vertices);
-    glVertexPointer(3, GL_FLOAT, 0, vertices); // 3 coordonnées pour chaque vertex
-    glEnableClientState(GL_COLOR_ARRAY);
-    //Générateur de couleur aléatoire pour chaque vertice
-    GLfloat colors[8];
-    for(int k=0;k<8;k++){
-        colors[k] = rand()/(float)RAND_MAX;
-    }
-    glColorPointer(3, GL_FLOAT, 0, colors);
-    glDrawArrays(GL_LINE_LOOP, 0, 4); // Dessine 6 triangles ayant 4 vertices chacun
-    glDisableClientState(GL_COLOR_ARRAY); // Désactive le tableau
-    glDisableClientState(GL_VERTEX_ARRAY); // Désactive le tableau
-    */
 }
 
 void Brick::getVertices(GLfloat listVertices[72]){

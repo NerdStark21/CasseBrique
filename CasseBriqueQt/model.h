@@ -16,7 +16,7 @@ class Model
 {
 private:
     vector<Wall> walls_;    // Contient les 4 murs du jeu
-    vector<Brick> bricks_;    // Contient toutes les briques du jeu
+    vector<Brick> bricks_;  // Contient toutes les briques du jeu
     Disk disk_;             // Contient le disque du jeu
     Ball ball_;             // Contient la balle du jeu
     Player player_;         // Contient les informations sur le joueur
@@ -34,23 +34,13 @@ public:
     void updateGame(const float time);
     void ballLost();
     void gameLost();
-    void createWall(Rect stuff, bool isDestructive)
-        {walls_.push_back(Wall(stuff, isDestructive));}
-    void createBrick(Rect stuff)
-        { bricks_.push_back(Brick(stuff)); }
-    Wall getWall(unsigned int k)
-        {return walls_.at(k);}
-    void drawDisk(){disk_.drawDisk();}
-    void drawWall(){
-        vector<Wall>::iterator itw;
-        for (itw = walls_.begin(); itw != walls_.end(); itw++)
-            itw->drawWall();
-    }
-    void drawBrick(){
-        vector<Brick>::iterator itw;
-        for (itw = bricks_.begin(); itw != bricks_.end(); itw++)
-            itw->drawBrick();
-    }
+    void createWall(Rect stuff, bool isDestructive) { walls_.push_back(Wall(stuff, isDestructive)); }
+    void createBrick(Rect stuff) { bricks_.push_back(Brick(stuff)); }
+    Wall getWall(unsigned int k) { return walls_.at(k); }
+    void drawDisk() { disk_.drawDisk(); }
+    void drawWall();
+    void drawBrick();
+    void drawBall();
 };
 
 #endif // MODEL_H

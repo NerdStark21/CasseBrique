@@ -33,7 +33,7 @@ void Wall::drawWall() {
     glPushMatrix();
     glLoadIdentity();
     glBegin(GL_QUADS);
-    glColor3ub(15, 15, 15);
+    glColor3ub(255, 0, 0);
     /*
     for (short f = 0; f < 6; f++) { // Les faces du parallélépipède rectangle
         for (short s = 0; s < 4; s++) { // Les sommets de la face
