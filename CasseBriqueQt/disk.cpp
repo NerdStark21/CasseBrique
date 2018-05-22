@@ -1,15 +1,66 @@
 #include "disk.h"
 
+
 Disk::Disk() : HardStuff()
 {
+    qDebug()<<"Création de merde !!!!!"<<endl;
     minAngle_ = 3.141592;
     maxAngle_ = 0;
 }
 
+
 Disk::Disk(Rect stuff, int minAngle, int maxAngle) : HardStuff(stuff)
 {
+    qDebug()<<"Création bien !!!!!"<<endl;
     minAngle_ = minAngle;
     maxAngle_ = maxAngle;
+}
+
+void Disk::drawDisk(){
+    qDebug()<<"stuff : "<<stuff_.x<<endl;
+    glPushMatrix();
+    glLoadIdentity();
+    glBegin(GL_QUADS);
+    glColor3ub(15, 15, 15);
+    /*
+    for (short f = 0; f < 6; f++) { // Les faces du parallélépipède rectangle
+        for (short s = 0; s < 4; s++) { // Les sommets de la face
+            glVertex3f(vertices[6 * f + 4 * s], vertices[6 * f + 4 * s + 1], vertices[6 * f + 4 * s + 2]);
+        }
+    }*/
+
+    glVertex3f(stuff_.x,stuff_.y, 0);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y, 0);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y + stuff_.height, 0);
+    glVertex3f(stuff_.x,stuff_.y + stuff_.height, 0);
+
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y, 0);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y + stuff_.height, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y + stuff_.height, 0);
+
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y, depth_);
+    glVertex3f(stuff_.x,stuff_.y, depth_);
+    glVertex3f(stuff_.x,stuff_.y + stuff_.height, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y + stuff_.height, depth_);
+
+    glVertex3f(stuff_.x,stuff_.y, depth_);
+    glVertex3f(stuff_.x,stuff_.y, 0);
+    glVertex3f(stuff_.x,stuff_.y + stuff_.height, 0);
+    glVertex3f(stuff_.x,stuff_.y + stuff_.height, depth_);
+
+    glVertex3f(stuff_.x,stuff_.y + stuff_.height, 0);
+    glVertex3f(stuff_.x,stuff_.y + stuff_.height, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y + stuff_.height, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y + stuff_.height, 0);
+
+    glVertex3f(stuff_.x,stuff_.y, 0);
+    glVertex3f(stuff_.x,stuff_.y, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y, 0);
+
+    glEnd();
+    glPopMatrix();
 }
 
 bool Disk::isTouched(Ball *ball) const
