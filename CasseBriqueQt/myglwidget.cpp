@@ -32,7 +32,9 @@ MyGLWidget::MyGLWidget(QWidget * parent) : QGLWidget(parent)
     m_AnimationTimer.start();
 
     model_ = new Model();
+    qDebug()<<"On a fait le model"<<endl;
     detection_ = new Detection();
+    qDebug()<<"Tout a été créé"<<endl;
 }
 
 // Fonction d'initialisation
@@ -76,7 +78,9 @@ void MyGLWidget::paintGL()
     bool lol = false;
     if(lol){
         // Acquisition de la caméra
+        qDebug()<<"Et ca va draw une image"<<endl;
         vect = detection_->drawImage();
+        qDebug()<<"Et ca draw une image"<<endl;
         //cerr<<vect.x<<"   "<<vect.y<<endl;
 
         if(vect.x>sensibilite){cerr<<"droite  "<<vect.x<<endl;}

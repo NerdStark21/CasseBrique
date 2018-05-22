@@ -5,14 +5,13 @@ using namespace std;
 
 Detection::Detection()
 {
-    frameWidth_=320;
-    frameHeight_=240;
-
+    frameWidth_=1000;
+    frameHeight_=1000;
     VideoCapture cap(0); // open the default camera
     cap_ = cap;
 
-    cap_.set(CV_CAP_PROP_FRAME_WIDTH,frameWidth_);
-    cap_.set(CV_CAP_PROP_FRAME_HEIGHT,frameHeight_);
+    cap.set(CV_CAP_PROP_FRAME_WIDTH,frameWidth_);
+    cap.set(CV_CAP_PROP_FRAME_HEIGHT,frameHeight_);
 
     if(!cap_.isOpened())  // check if we succeeded
     {
@@ -21,8 +20,8 @@ Detection::Detection()
 
     // Init output window
     namedWindow("WebCam",1);
-
     drawImage();
+    qDebug()<<"On a enfin draw"<<endl;
 }
 
 Point Detection::drawImage(){
