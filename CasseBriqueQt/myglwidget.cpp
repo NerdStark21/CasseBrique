@@ -75,7 +75,7 @@ void MyGLWidget::paintGL()
 {
     Point vect;
     int sensibilite = 5;
-    bool lol = false;
+    bool lol = true;
     if(lol){
         // Acquisition de la caméra
         qDebug()<<"Et ca va draw une image"<<endl;
@@ -105,4 +105,8 @@ void MyGLWidget::paintGL()
     model_->drawWall();
     model_->drawBrick();
     model_->drawDisk();
+    model_->drawBall();
+
+    //model_->updateGame(m_TimeElapsed);
+
 }

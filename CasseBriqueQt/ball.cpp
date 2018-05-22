@@ -8,9 +8,9 @@ Ball::Ball()
     angle_ = 3.141592 / 4;
 }
 
-Ball::Ball(float radius, int speed, float angle)
+Ball::Ball(int x, int y, float radius, int speed, float angle)
 {
-    position_ = Point(9, 5);
+    position_ = Point(x, y);
     radius_ = radius;
     speed_ = speed;
     angle_ = angle;

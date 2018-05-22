@@ -8,6 +8,21 @@ Disk::Disk() : HardStuff()
     maxAngle_ = 0;
 }
 
+void Disk::move(int deplacement){
+    stuff_.x += (deplacement/10)*10*(stuff_.x>-125 && stuff_.x<125);
+    if(deplacement >0){
+        if(stuff_.x+deplacement+80<125){
+            stuff_.x += deplacement;
+        }
+    }
+    else{
+        if(stuff_.x+deplacement>-125){
+            stuff_.x += deplacement;
+        }
+    }
+}
+
+
 
 Disk::Disk(Rect stuff, int minAngle, int maxAngle) : HardStuff(stuff)
 {

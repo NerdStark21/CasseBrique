@@ -5,7 +5,6 @@ using namespace std;
 Model::Model()
 {
     qDebug()<<"Création du model"<<endl;
-    //disk_ = Disk(Rect(10, 10, 5, 1), 10, 20);
     state_ = 0;
     int cote = 250;
     int epaisseur = 5;
@@ -38,6 +37,8 @@ Model::Model()
     Rect coordDisk(-20, -cote/2+10, 40, 10);
     disk_ = Disk(coordDisk, -45, 45);
 
+    ball_ = Ball(0, 20, 10, 20, -0.7);
+
 }
 
 void Model::updateGame(const float time)
@@ -52,6 +53,7 @@ void Model::updateGame(const float time)
     vector<Wall>::iterator itw;
     for (itw = walls_.begin(); itw != walls_.end(); itw++) {
         if (itw->isTouched(&ball_)) {
+            qDebug() << "Coucou je suis là" << endl;
             if (itw->getIsDestructive()) {
                 ballLost();
             }
@@ -62,7 +64,7 @@ void Model::updateGame(const float time)
     // Gestion de la colision des briques
     vector<Brick>::iterator itb;
     for (itb = bricks_.begin(); itb != bricks_.end(); itb++) {
-        if (itb->isTouched(&ball_)) {
+        if (!itb->getIsDestroyed() && itb->isTouched(&ball_)) {
             player_.addScore(itb->getPoints());
             itb->destroy();
         }
@@ -94,19 +96,21 @@ void Model::drawWall()
 void Model::drawBrick()
 {
     vector<Brick>::iterator itw;
-    for (itw = bricks_.begin(); itw != bricks_.end(); itw++)
-        itw->drawBrick();
+    for (itw = bricks_.begin(); itw != bricks_.end(); itw++) {
+        if (!itw->getIsDestroyed())
+            itw->drawBrick();
+    }
 }
 
 void Model::drawBall()
-{/*
-    //GLUquadric* quadrique = gluNewQuadric();
+{
+    GLUquadric* quadrique = gluNewQuadric();
     glPushMatrix();
     glColor3ub(255, 150, 130);
-    //glTranslatef(ball_.getPosition().x, ball_.getPosition().y, - ball_.getRadius());
-    //gluQuadricDrawStyle(quadrique, GLU_FILL);
-    //gluSphere(quadrique, ball_.getRadius(), 20, 20);
-    //gluDeleteQuadric(quadrique);
+    glTranslatef(ball_.getPosition().x, ball_.getPosition().y, - ball_.getRadius());
+    gluQuadricDrawStyle(quadrique, GLU_FILL);
+    gluSphere(quadrique, ball_.getRadius(), 20, 20);
+    gluDeleteQuadric(quadrique);
     glPopMatrix();
-*/}
+}
 

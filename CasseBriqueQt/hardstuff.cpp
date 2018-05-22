@@ -21,7 +21,7 @@ HardStuff::HardStuff(Rect stuff)
 short HardStuff::ballPosition(const Ball *ball) const
 {
     int xb = ball->getPosition().x;
-    int yb = ball->getPosition().y;
+    int yb = -ball->getPosition().y;
 
         // Boule en haut à gauche
     if (xb < stuff_.x && yb < stuff_.y) {
@@ -32,7 +32,7 @@ short HardStuff::ballPosition(const Ball *ball) const
         return 2;
     }
         // Boule en bas à droite
-    if (xb > stuff_.x + stuff_.width && yb > stuff_.y + stuff_.height) {
+    if (xb > stuff_.x + stuff_.width && yb < stuff_.y + stuff_.height) {
         return 4;
     }
         // Boule en bas à gauche
@@ -48,7 +48,7 @@ short HardStuff::ballPosition(const Ball *ball) const
         return 3;
     }
         // Boule en bas au milieu
-    if (yb > stuff_.y + stuff_.width) {
+    if (yb > stuff_.y + stuff_.height) {
         return 5;
     }
         // Boule à gauche au milieu
@@ -56,7 +56,7 @@ short HardStuff::ballPosition(const Ball *ball) const
         return 7;
     }
 
-    throw std::logic_error("La fonction ballPosition n'est pas censée arriver ici");
+    std::cerr << "Erreur : la fonction n'est pas censée arriver jusque la" << endl;
 }
 
 
@@ -160,7 +160,7 @@ bool HardStuff::isTouched(Ball *ball) const
         return false;
 
     case 1: // Boule en haut au milieu
-        if (ball->getRadius() > yb - stuff_.y) {
+        if (yb + ball->getRadius() > stuff_.y) {
             move = yb + ball->getRadius() - stuff_.y;
             ball->setPosition(xb, yb - 2 * move);
             ball->setAngle(-ball->getAngle());
@@ -169,7 +169,7 @@ bool HardStuff::isTouched(Ball *ball) const
         return false;
 
     case 3: // Boule à droite au milieu
-        if (ball->getRadius() > xb - stuff_.x - stuff_.width) {
+        if (xb - ball->getRadius() < stuff_.x + stuff_.width) {
             move = stuff_.x + stuff_.width + ball->getRadius() - xb;
             ball->setPosition(xb + 2 * move, yb);
             ball->setAngle(-M_PI * ball->getAngle() + M_PI);
@@ -178,7 +178,7 @@ bool HardStuff::isTouched(Ball *ball) const
         return false;
 
     case 5: // Boule en bas au milieu
-        if (ball->getRadius() > stuff_.y + stuff_.height - yb) {
+        if (yb - ball->getRadius() < stuff_.y + stuff_.height) {
             move = stuff_.y + stuff_.height + ball->getRadius() - yb;
             ball->setPosition(xb, yb + 2 * move);
             ball->setAngle(-ball->getAngle());
@@ -187,7 +187,7 @@ bool HardStuff::isTouched(Ball *ball) const
         return false;
 
     case 7: // Boule à gauche au milieu
-        if (ball->getRadius() > stuff_.x - xb) {
+        if (xb + ball->getRadius() > stuff_.x) {
             move = xb + ball->getRadius() - stuff_.x;
             ball->setPosition(xb - 2 * move, yb);
             ball->setAngle(-M_PI * ball->getAngle() + M_PI);
