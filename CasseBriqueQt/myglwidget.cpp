@@ -11,7 +11,6 @@ const unsigned int WIN_HEIGHT = 700;
 const float ASPECT_RATIO      = static_cast<float>(WIN_WIDTH) / WIN_HEIGHT;
 const float ORTHO_DIM         = 50.0f;
 */
-
 const unsigned int WIN_WIDTH  = 15;
 const unsigned int WIN_HEIGHT = 6;
 const float MAX_DIMENSION     = 200.0f;
@@ -72,11 +71,12 @@ void MyGLWidget::resizeGL(int width, int height)
 // Fonction d'affichage
 void MyGLWidget::paintGL()
 {
+    Point vect;
     int sensibilite = 5;
-    bool lol = true;
+    bool lol = false;
     if(lol){
         // Acquisition de la caméra
-        Point vect = detection_->drawImage();
+        vect = detection_->drawImage();
         //cerr<<vect.x<<"   "<<vect.y<<endl;
 
         if(vect.x>sensibilite){cerr<<"droite  "<<vect.x<<endl;}
@@ -97,8 +97,8 @@ void MyGLWidget::paintGL()
               0.0,0.0,0.0,
               0.0,-1.0,0.0);
 
-    model_->drawWall();
-    model_->drawBrick();
-
-    //glPopMatrix();
+    //model_->move(vect.x);
+    //model_->drawWall();
+    //model_->drawBrick();
+    //model_->drawDisk();
 }

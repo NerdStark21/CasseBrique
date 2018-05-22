@@ -31,6 +31,7 @@ public:
      * @param time
      *  temps écoulé depuis la dernière actualisation
      */
+    void move(int deplacement){disk_.move(deplacement);}
     void updateGame(const float time);
     void ballLost();
     void gameLost();
