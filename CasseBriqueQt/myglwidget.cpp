@@ -27,6 +27,7 @@ MyGLWidget::MyGLWidget(QWidget * parent) : QGLWidget(parent)
     m_AnimationTimer.start();
 
     model_ = new Model();
+    detection_ = new Detection();
 }
 
 // Fonction d'initialisation
@@ -59,10 +60,6 @@ void MyGLWidget::resizeGL(int width, int height)
 // Fonction d'affichage
 void MyGLWidget::paintGL()
 {
-<<<<<<< HEAD
-=======
-    qDebug()<<"Paint !"<<endl;
->>>>>>> De la merde
     // Reinitialisation des tampons
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -71,12 +68,7 @@ void MyGLWidget::paintGL()
     glLoadIdentity();
 
     // Caméra / Cible / Vecteur vertical
-<<<<<<< HEAD
     gluLookAt(-5, -5, -13,
-=======
-    glPushMatrix();
-    gluLookAt(0, 0, -10,
->>>>>>> De la merde
               0, 0, 0,
               0, 1, 0);
 

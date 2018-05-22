@@ -9,6 +9,7 @@
 #include <GL/glu.h>
 #include "wall.h"
 #include "model.h"
+#include "detection.h"
 
 class MyGLWidget : public QGLWidget{
     Q_OBJECT
@@ -32,6 +33,7 @@ private:
     Model* model_;
     float m_TimeElapsed { 0.0f };
     QTimer m_AnimationTimer;
+    Detection* detection_;
 };
 
 

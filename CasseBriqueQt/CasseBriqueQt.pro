@@ -14,6 +14,13 @@ else {
         LIBS     += -lGL -lGLU
 }
 
+LIBS += -L$$(OPENCV_DIR)\lib \
+    -lopencv_core2413 \
+    -lopencv_highgui2413 \
+    -lopencv_imgproc2413 \
+    -lopencv_features2d2413 \
+    -lopencv_calib3d2413
+
 TARGET = CasseBriqueQt
 
 # The following define makes your compiler emit warnings if you use
@@ -38,11 +45,7 @@ SOURCES += \
     player.cpp \
     myglwidget.cpp \
     model.cpp \
-<<<<<<< HEAD
     detection.cpp
-=======
-    cocou.cpp
->>>>>>> De la merde
 
 HEADERS += \
     hardstuff.h \
