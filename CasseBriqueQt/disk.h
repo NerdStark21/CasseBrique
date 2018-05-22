@@ -15,6 +15,8 @@ public:
 
     // Les fonctions abstraites de HardStuff
     bool isTouched(Ball * ball) const override;
+    void move(int x){stuff_.x += x%10;}
+    void drawDisk();
 };
 
 #endif // DISK_H

@@ -7,13 +7,13 @@ Model::Model()
     qDebug()<<"Création du model"<<endl;
     //disk_ = Disk(Rect(10, 10, 5, 1), 10, 20);
     state_ = 0;
-    int cote = 50;
-    int epaisseur = 10;
+    int cote = 250;
+    int epaisseur = 5;
     // Création de tous les murs
-    Rect coordU(0, cote, cote, epaisseur);
-    Rect coordD(0, 0, cote, epaisseur);
-    Rect coordL(0, 0, epaisseur, cote);
-    Rect coordR(0, cote, epaisseur, cote);
+    Rect coordU(-cote/2, cote/2, cote, epaisseur);
+    Rect coordD(-cote/2, -cote/2, cote, epaisseur);
+    Rect coordL(-cote/2, -cote/2, epaisseur, cote);
+    Rect coordR(cote/2, -cote/2, epaisseur, cote);
 
     Wall wallU(coordU, false);
     Wall wallD(coordD, true);
@@ -27,8 +27,8 @@ Model::Model()
 
     // Création de toutes les briques
     for(int ligne=0;ligne<5;ligne++){
-        for(int colonne=0;colonne<7;colonne++){
-            Brick brick(Rect(colonne*15+1, ligne*5+1, 15, 5));
+        for(int colonne=0;colonne<9;colonne++){
+            Brick brick(Rect(colonne*25 -110, 110 - ligne*10, 21, 7));
             bricks_.push_back(brick);
         }
     }
@@ -121,11 +121,4 @@ void Model::ballLost()
 void Model::gameLost()
 {
     state_ = 2;
-}
-
-void Model::drawWall()
-{
-    vector<Wall>::iterator itw;
-    for (itw = walls_.begin(); itw != walls_.end(); itw++)
-        itw->drawWall();
 }

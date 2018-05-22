@@ -3,11 +3,56 @@
 Brick::Brick(Rect stuff) : HardStuff(stuff)
 {
     points_ = 1;
+    isDestroyed_ = false;
 }
 
 void Brick::drawBrick(){
-    qDebug()<<"Ca draw un wall"<<endl;
 
+    glPushMatrix();
+    glLoadIdentity();
+    glBegin(GL_QUADS);
+    glColor3ub(15, 15, 15);
+    /*
+    for (short f = 0; f < 6; f++) { // Les faces du parallélépipède rectangle
+        for (short s = 0; s < 4; s++) { // Les sommets de la face
+            glVertex3f(vertices[6 * f + 4 * s], vertices[6 * f + 4 * s + 1], vertices[6 * f + 4 * s + 2]);
+        }
+    }*/
+
+    glVertex3f(stuff_.x,stuff_.y, 0);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y, 0);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y + stuff_.height, 0);
+    glVertex3f(stuff_.x,stuff_.y + stuff_.height, 0);
+
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y, 0);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y + stuff_.height, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y + stuff_.height, 0);
+
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y, depth_);
+    glVertex3f(stuff_.x,stuff_.y, depth_);
+    glVertex3f(stuff_.x,stuff_.y + stuff_.height, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y + stuff_.height, depth_);
+
+    glVertex3f(stuff_.x,stuff_.y, depth_);
+    glVertex3f(stuff_.x,stuff_.y, 0);
+    glVertex3f(stuff_.x,stuff_.y + stuff_.height, 0);
+    glVertex3f(stuff_.x,stuff_.y + stuff_.height, depth_);
+
+    glVertex3f(stuff_.x,stuff_.y + stuff_.height, 0);
+    glVertex3f(stuff_.x,stuff_.y + stuff_.height, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y + stuff_.height, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y + stuff_.height, 0);
+
+    glVertex3f(stuff_.x,stuff_.y, 0);
+    glVertex3f(stuff_.x,stuff_.y, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y, 0);
+
+    glEnd();
+    glPopMatrix();
+
+    /*
     //Vertices avec array
     glEnableClientState(GL_VERTEX_ARRAY); // Active le tableau permettant de définir les vertices
     GLfloat vertices[72];
@@ -23,6 +68,7 @@ void Brick::drawBrick(){
     glDrawArrays(GL_LINE_LOOP, 0, 4); // Dessine 6 triangles ayant 4 vertices chacun
     glDisableClientState(GL_COLOR_ARRAY); // Désactive le tableau
     glDisableClientState(GL_VERTEX_ARRAY); // Désactive le tableau
+    */
 }
 
 void Brick::getVertices(GLfloat listVertices[72]){

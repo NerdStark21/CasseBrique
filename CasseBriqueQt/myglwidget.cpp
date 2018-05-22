@@ -5,16 +5,22 @@
 using namespace cv;
 
 // Declarations des constantes
+/*
 const unsigned int WIN_WIDTH  = 700;
 const unsigned int WIN_HEIGHT = 700;
 const float ASPECT_RATIO      = static_cast<float>(WIN_WIDTH) / WIN_HEIGHT;
 const float ORTHO_DIM         = 50.0f;
+*/
+
+const unsigned int WIN_WIDTH  = 15;
+const unsigned int WIN_HEIGHT = 6;
+const float MAX_DIMENSION     = 200.0f;
 
 // Constructeur
 MyGLWidget::MyGLWidget(QWidget * parent) : QGLWidget(parent)
 {
     // Reglage de la taille/position
-    setFixedSize(WIN_WIDTH, WIN_HEIGHT);
+    //setFixedSize(WIN_WIDTH, WIN_HEIGHT);
     move(QApplication::desktop()->screen()->rect().center() - rect().center());
 
     // Connexion du timer
@@ -44,16 +50,22 @@ void MyGLWidget::initializeGL()
 void MyGLWidget::resizeGL(int width, int height)
 {
     // Definition du viewport (zone d'affichage)
-    glViewport(	0, 0, WIN_WIDTH, WIN_HEIGHT);
+    glViewport(0, 0, width, height);
 
     // Definition de la matrice de projection
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    //gluPerspective(80.0, (GLdouble)WIN_WIDTH/(GLdouble)WIN_WIDTH, 0.1, 12.0);
-    glFrustum(-2, 2, -2, 2, 4, 150);
 
-    // Definition de la matrice de modele
+    //Système de coordonnées
+    if(width != 0){
+        //glOrtho(-MAX_DIMENSION, MAX_DIMENSION,-6.0,6.0,0.0,10.0);
+        glOrtho(-MAX_DIMENSION, MAX_DIMENSION, -MAX_DIMENSION * height / static_cast<float>(width), MAX_DIMENSION * height / static_cast<float>(width), -MAX_DIMENSION * 2.0f, MAX_DIMENSION * 2.0f);
+        //glOrtho(0.0,30.0,0.0,30.0,-5.0,5.0);
+    }
+
     glMatrixMode(GL_MODELVIEW);
+
+    //Réinitialisation
     glLoadIdentity();
 }
 
@@ -81,11 +93,11 @@ void MyGLWidget::paintGL()
     glLoadIdentity();
 
     // Caméra / Cible / Vecteur vertical
-    gluLookAt(-5, -5, -13,
-              0, 0, 0,
-              0, 1, 0);
-
-    bool affichageRepere = true;
+    gluLookAt(0.0,0.0,10,
+              0.0,0.0,0.0,
+              0.0,-1.0,0.0);
+    /*
+    bool affichageRepere = false;
     if(affichageRepere){
         // Affichage d'un repère
         glBegin(GL_LINES);
@@ -103,38 +115,52 @@ void MyGLWidget::paintGL()
         glEnd();
     }
 
-    glLoadIdentity();
+    glPushMatrix();
     glBegin(GL_QUADS);
-    glColor3ub(0,0,255); glVertex3f(-1.0f, -1.0f, 1.0f);
+    glColor3ub(0,0,255);
+    glVertex3f(-1.0f, -1.0f, 1.0f);
     glVertex3f( 1.0f, -1.0f, 1.0f);
     glVertex3f( 1.0f, 1.0f, 1.0f);
     glVertex3f(-1.0f, 1.0f, 1.0f);
 
-    glColor3ub(255,0,255); glVertex3f(-1.0f, -1.0f, -1.0f);
+    glColor3ub(255,0,255);
+    glVertex3f(-1.0f, -1.0f, -1.0f);
     glVertex3f(-1.0f, 1.0f, -1.0f);
     glVertex3f( 1.0f, 1.0f, -1.0f);
     glVertex3f( 1.0f, -1.0f, -1.0f);
 
-    glColor3ub(255,0,0); glVertex3f(-1.0f, 1.0f, -1.0f);
+    glColor3ub(255,0,0);
+    glVertex3f(-1.0f, 1.0f, -1.0f);
     glVertex3f(-1.0f, 1.0f, 1.0f);
     glVertex3f(-1.0f, -1.0f, 1.0f);
     glVertex3f(-1.0f, -1.0f, -1.0f);
 
-    glColor3ub(0,255,255); glVertex3f(1.0f, 1.0f, -1.0f);
+    glColor3ub(0,255,255);
+    glVertex3f(1.0f, 1.0f, -1.0f);
     glVertex3f( 1.0f, -1.0f, -1.0f);
     glVertex3f( 1.0f, -1.0f, 1.0f);
     glVertex3f( 1.0f, 1.0f, 1.0f);
 
-    glColor3ub(0,255,0); glVertex3f( 1.0f, -1.0f, -1.0f);
+    glColor3ub(0,255,0);
+    glVertex3f( 1.0f, -1.0f, -1.0f);
     glVertex3f( 1.0f, -1.0f, 1.0f);
     glVertex3f(-1.0f, -1.0f, 1.0f);
     glVertex3f(-1.0f, -1.0f, -1.0f);
 
-    glColor3ub(255,255,0); glVertex3f(1.0f, 1.0f, -1.0f);
+    glColor3ub(255,255,0);
+    glVertex3f(1.0f, 1.0f, -1.0f);
     glVertex3f(1.0f, 1.0f, 1.0f);
     glVertex3f(-1.0f, 1.0f, 1.0f);
     glVertex3f(-1.0f, 1.0f, -1.0f);
 
-    //model_->drawWall();
-    //model_->drawBrick();
+
+
+    glEnd();
+    // Matrice de translation
+    */
+
+    model_->drawWall();
+    model_->drawBrick();
+
+    //glPopMatrix();
 }

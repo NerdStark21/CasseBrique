@@ -27,18 +27,51 @@ void Wall::drawWall(){
 }*/
 
 void Wall::drawWall() {
-    GLfloat vertices[72];
-    getVertices(vertices);
+    //GLfloat vertices[72];
+    //getVertices(vertices);
 
     glPushMatrix();
     glLoadIdentity();
     glBegin(GL_QUADS);
     glColor3ub(15, 15, 15);
+    /*
     for (short f = 0; f < 6; f++) { // Les faces du parallélépipède rectangle
         for (short s = 0; s < 4; s++) { // Les sommets de la face
             glVertex3f(vertices[6 * f + 4 * s], vertices[6 * f + 4 * s + 1], vertices[6 * f + 4 * s + 2]);
         }
-    }
+    }*/
+
+    glVertex3f(stuff_.x,stuff_.y, 0);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y, 0);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y + stuff_.height, 0);
+    glVertex3f(stuff_.x,stuff_.y + stuff_.height, 0);
+
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y, 0);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y + stuff_.height, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y + stuff_.height, 0);
+
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y, depth_);
+    glVertex3f(stuff_.x,stuff_.y, depth_);
+    glVertex3f(stuff_.x,stuff_.y + stuff_.height, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y + stuff_.height, depth_);
+
+    glVertex3f(stuff_.x,stuff_.y, depth_);
+    glVertex3f(stuff_.x,stuff_.y, 0);
+    glVertex3f(stuff_.x,stuff_.y + stuff_.height, 0);
+    glVertex3f(stuff_.x,stuff_.y + stuff_.height, depth_);
+
+    glVertex3f(stuff_.x,stuff_.y + stuff_.height, 0);
+    glVertex3f(stuff_.x,stuff_.y + stuff_.height, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y + stuff_.height, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y + stuff_.height, 0);
+
+    glVertex3f(stuff_.x,stuff_.y, 0);
+    glVertex3f(stuff_.x,stuff_.y, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y, depth_);
+    glVertex3f(stuff_.x + stuff_.width,stuff_.y, 0);
+
+    glEnd();
     glPopMatrix();
 }
 
