@@ -25,10 +25,12 @@ Model::Model()
     walls_.push_back(wallL);
     walls_.push_back(wallR);
 
+    int largeur = 6;
     // Création de toutes les briques
-    for(int ligne=0;ligne<5;ligne++){
-        for(int colonne=0;colonne<9;colonne++){
-            Brick brick(Rect(colonne*25 -110, 110 - ligne*10, 21, 7));
+    for(int ligne=0;ligne<12;ligne++){
+        for(int colonne=0;colonne<10;colonne++){
+            Brick brick(Rect(colonne*(3*largeur+5) -110, 110 - ligne*(largeur+3), 3*largeur, largeur));
+            //Brick brick(Rect(colonne*25 -110, 110 - ligne*10, 21, 7));
             bricks_.push_back(brick);
         }
     }
